@@ -31,7 +31,7 @@
   height: 100%;
   border-radius: 20px;
   overflow: hidden;
-  border: 1px solid #cccccc;
+  background-color: #FFFFFF;
 }
 
 .about
@@ -41,7 +41,14 @@
   left: 0;
   width: 100%;
   height: 100%;
-  margin-left: 415px;
+  padding-left: 415px;
+  box-sizing: border-box;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #FFFFFF;
 }
 
 @media only screen and (max-width: 960px) {
