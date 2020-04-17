@@ -1,33 +1,24 @@
 import React from "react";
-import { HashRouter as Router, Switch, Route, Link } from "react-router-dom";
-import logo from "./logo.svg";
-import "./App.css";
+import { HashRouter, Route } from "react-router-dom";
+import "./App.scss";
+
+import Map from './App/Map'
+import List from './App/List'
+import Tabbar from './App/Tabbar'
 
 function App() {
   return (
-    <Router>
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/about">About</Link>
-            </li>
-          </ul>
-          <Switch>
-            <Route exact path="/">
-              <p>home</p>
-            </Route>
-            <Route path="/about">
-              <p>about</p>
-            </Route>
-          </Switch>
-        </header>
+    <div className="app">
+      <div className="app-body">
+        <HashRouter>
+          <Route exact path="/" component={Map} />
+          <Route exact path="/list" component={List} />
+        </HashRouter>
       </div>
-    </Router>
+      <div className="app-footer">
+        <Tabbar />
+      </div>
+    </div>
   );
 }
 
