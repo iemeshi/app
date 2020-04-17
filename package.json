@@ -41,6 +41,7 @@
   "devDependencies": {
     "@types/qrcode.react": "^1.0.0",
     "@types/react-router-dom": "^5.1.4",
+    "js-yaml-loader": "^1.2.2",
     "node-sass": "^4.13.1"
   }
 }
