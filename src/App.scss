@@ -1,12 +1,12 @@
 .app-body
 {
-  height: calc(100% - 66px);
+  height: calc(100% - 50px - env(safe-area-inset-bottom));
 }
 
 .app-footer
 {
-  height: 66px;
+  height: 50px;
   background-color: #ffffff;
   border-top: 1px solid #cccccc;
-  box-sizing: border-box;
+  --safe-area-inset-bottom: env(safe-area-inset-bottom);
 }
