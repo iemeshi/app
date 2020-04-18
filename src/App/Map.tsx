@@ -1,10 +1,30 @@
 import React from "react";
 
-
-const Content = () => {
-  return (
-    <>Map</>
-  );
+type Props = {
 };
 
-export default Content;
+class Map extends React.Component<Props> {
+  container = React.createRef<HTMLDivElement>();
+
+  constructor(props: Props) {
+    super(props);
+  }
+
+  componentDidMount() {
+    // @ts-ignore
+    const { geolonia } = window;
+    const map = new geolonia.Map(this.container.current);
+  }
+
+  render() {
+    return (
+      <div
+        className="map"
+        ref={this.container}
+        data-geolocate-control="ON"
+      />
+    );
+  }
+}
+
+export default Map;

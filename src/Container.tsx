@@ -8,8 +8,8 @@ function Content() {
   return (
     <div className="outer-container">
       <div className="inner-container">
-        <App />
         <About />
+        <App />
       </div>
     </div>
   );
