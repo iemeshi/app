@@ -20,8 +20,8 @@
     "typescript": "~3.7.2"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": ". ./.env && react-scripts start",
+    "build": ". ./.env && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
