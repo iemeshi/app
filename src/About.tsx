@@ -5,8 +5,6 @@ import QRCode from 'qrcode.react'
 import Share from './App/Share'
 import config from './config.json'
 
-document.title = `${config.name} テイクアウトマップ | イエメシ`
-
 const Content = () => {
   const url = window.location.href.replace(/#.+$/, '')
 
