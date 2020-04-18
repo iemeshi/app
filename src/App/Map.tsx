@@ -8,10 +8,6 @@ type Props = {
 class Map extends React.Component<Props> {
   container = React.createRef<HTMLDivElement>();
 
-  constructor(props: Props) {
-    super(props);
-  }
-
   componentDidMount() {
     // @ts-ignore
     const { geolonia } = window;

@@ -4,6 +4,8 @@ import "./App.scss";
 
 import Map from './App/Map'
 import List from './App/List'
+import AboutUs from './App/AboutUs'
+
 import Tabbar from './App/Tabbar'
 
 function App() {
@@ -13,6 +15,7 @@ function App() {
         <HashRouter>
           <Route exact path="/" component={Map} />
           <Route exact path="/list" component={List} />
+          <Route exact path="/about" component={AboutUs} />
         </HashRouter>
       </div>
       <div className="app-footer">
