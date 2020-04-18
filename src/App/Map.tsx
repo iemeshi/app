@@ -15,6 +15,9 @@ class Map extends React.Component<Props> {
     window.addEventListener('resize', () => {
       map.resize()
     })
+    window.addEventListener('orientationchange', () => {
+      map.resize()
+    })
   }
 
   render() {
