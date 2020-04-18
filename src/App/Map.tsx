@@ -11,7 +11,10 @@ class Map extends React.Component<Props> {
   componentDidMount() {
     // @ts-ignore
     const { geolonia } = window;
-    new geolonia.Map(this.container.current);
+    const map = new geolonia.Map(this.container.current);
+    window.addEventListener('resize', () => {
+      map.resize()
+    })
   }
 
   render() {
