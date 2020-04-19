@@ -31,7 +31,7 @@ class App extends React.Component {
 
   fixAppHeight = () => {
     if(window.innerWidth < 960)
-    // wait until the browser complete rotation
+    // wait until browser completes rotation
     setTimeout(() => {
       this.setState({ appBodyHeight: App.getAppHeight() })
     }, 500)
