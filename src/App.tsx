@@ -10,12 +10,44 @@ import Tabbar from './App/Tabbar'
 
 class App extends React.Component {
 
-  componentDidMount() {}
+  state = {
+    appBodyHeight: App.getAppHeight()
+  }
+
+  // .app-footer has 50px height
+  static getAppHeight = () => {
+    console.log(window.innerWidth)
+    if(window.innerWidth > 960) {
+      return void 0
+    } else {
+      return window.innerHeight - 50
+    }
+  }
+
+  componentDidMount() {
+    this.fixAppHeight()
+    window.addEventListener('resize', this.fixAppHeight)
+  }
+
+  fixAppHeight = () => {
+    if(window.innerWidth < 960)
+    // wait until the browser complete rotation
+    setTimeout(() => {
+      this.setState({ appBodyHeight: App.getAppHeight() })
+    }, 500)
+  }
+
 
   render() {
+    const { appBodyHeight } = this.state || {}
+
     return (
-      <div className="app">
-        <div className="app-body">
+      <div id="app" className="app">
+        <div id="app-body" className="app-body"
+        // override height value with mobile view
+        // this adjusts landscape height when rotated
+        style={{ height: appBodyHeight }}
+        >
           <HashRouter>
             <Route exact path="/" component={Map} />
             <Route exact path="/list" component={List} />
