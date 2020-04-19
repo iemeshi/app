@@ -33,6 +33,7 @@ class App extends React.Component {
   }
 
   fixAppHeight = () => {
+    // skip if Laptop view
     if(window.innerWidth < 960)
     // wait until browser completes rotation
     setTimeout(() => {
