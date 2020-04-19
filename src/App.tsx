@@ -8,21 +8,26 @@ import AboutUs from './App/AboutUs'
 
 import Tabbar from './App/Tabbar'
 
-function App() {
-  return (
-    <div className="app">
-      <div className="app-body">
-        <HashRouter>
-          <Route exact path="/" component={Map} />
-          <Route exact path="/list" component={List} />
-          <Route exact path="/about" component={AboutUs} />
-        </HashRouter>
+class App extends React.Component {
+
+  componentDidMount() {}
+
+  render() {
+    return (
+      <div className="app">
+        <div className="app-body">
+          <HashRouter>
+            <Route exact path="/" component={Map} />
+            <Route exact path="/list" component={List} />
+            <Route exact path="/about" component={AboutUs} />
+          </HashRouter>
+        </div>
+        <div className="app-footer">
+          <Tabbar />
+        </div>
       </div>
-      <div className="app-footer">
-        <Tabbar />
-      </div>
-    </div>
-  );
+    );
+  }
 }
 
 export default App;
