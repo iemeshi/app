@@ -28,6 +28,9 @@ class App extends React.Component {
     this.fixAppHeight()
     window.addEventListener('resize', this.fixAppHeight)
   }
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.fixAppHeight)
+  }
 
   fixAppHeight = () => {
     if(window.innerWidth < 960)
