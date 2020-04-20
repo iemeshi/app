@@ -35,7 +35,7 @@ if (!config) {
 
 const envText =
   Object.keys(config)
-    // オブジェクトは環境変数として出力しない
+    // オブジェクト等は環境変数として出力しない
     .filter((key) => typeof config[key] === "string" || typeof config[key] === "number")
     .map((key) => `export REACT_APP_${key.toUpperCase()}=${config[key]}`)
     .join("\n") + "\n";
