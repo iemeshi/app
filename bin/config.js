@@ -5,10 +5,6 @@
 const fs = require("fs");
 const YAML = require("yaml");
 
-// 例外的にプレフィックス無しで環境変数に展開する属性
-//　https://create-react-app.dev/docs/adding-custom-environment-variables/#referencing-environment-variables-in-the-html
-const exceptions = ["PUBLIC_URL", "NODE_ENV"];
-
 const configFilePath = process.cwd() + "/config.yml";
 
 let yamlText;
@@ -38,14 +34,7 @@ if (!config) {
 
 const envText =
   Object.keys(config)
-    .map((key) => {
-      const upperCasedKey = key.toUpperCase();
-      if (exceptions.includes(upperCasedKey)) {
-        return `export ${upperCasedKey}=${config[key]}`;
-      } else {
-        return `export REACT_APP_${upperCasedKey}=${config[key]}`;
-      }
-    })
+    .map((key) => `export REACT_APP_${key.toUpperCase()}=${config[key]}`)
     .join("\n") + "\n";
 
 process.stdout.write(envText);
