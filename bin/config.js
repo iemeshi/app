@@ -6,7 +6,7 @@ const fs = require("fs");
 const YAML = require("yaml");
 
 const srcConfigFilePath = process.cwd() + "/config.yml";
-const distConfigFilePath = process.cwd() + "config.json";
+const distConfigFilePath = process.cwd() + "/src/config.json";
 
 let yamlText;
 try {
@@ -35,8 +35,8 @@ if (!config) {
 
 const envText =
   Object.keys(config)
-    // オブジェクト以外は環境変数としても出力する
-    .filter((key) => typeof config[key] === "string" || "number")
+    // オブジェクトは環境変数として出力しない
+    .filter((key) => typeof config[key] === "string" || typeof config[key] === "number")
     .map((key) => `export REACT_APP_${key.toUpperCase()}=${config[key]}`)
     .join("\n") + "\n";
 

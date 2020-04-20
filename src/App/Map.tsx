@@ -1,13 +1,6 @@
 import React from "react";
-// @ts-ignore
 import data from '../data.json'
-
-// @ts-ignore
-const lat = parseFloat(process.env.REACT_APP_LAT)
-// @ts-ignore
-const lng = parseFloat(process.env.REACT_APP_LNG)
-// @ts-ignore
-const zoom = parseFloat(process.env.REACT_APP_ZOOM)
+import config from '../config.json'
 
 type Props = {
 };
@@ -39,9 +32,9 @@ class Map extends React.Component<Props> {
         style={mapStyle}
         ref={this.container}
         data-geolocate-control="on"
-        data-lat={lat}
-        data-lng={lng}
-        data-zoom={zoom}
+        data-lat={config.map.lat}
+        data-lng={config.map.lng}
+        data-zoom={config.map.zoom}
         data-marker="off"
         data-gesture-handling="off"
       ></div>
