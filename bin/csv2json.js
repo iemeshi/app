@@ -1,54 +1,41 @@
+/**
+ * @file CSV 読み込み
+ */
+
 const axios = require("axios");
 const parse = require("csv-parse");
-const fs = require('fs')
+const fs = require("fs");
+const chalk = require("chalk");
 
 const DATA_URL = process.env.REACT_APP_DATA_URL;
-const reservedColumns = [
-  "緯度",
-  "経度",
-  "店名",
-  "住所",
-  "電話番号",
-  "営業時間",
-  "ジャンル",
-  "価格帯",
-  "支払い方法",
-  "Instagram",
-  "Twitter",
-  "LINE",
-  "Facebook",
-  "公式サイト",
-];
 
-const dataFilePath = `${process.cwd()}/public/data.geojson`
+const ERROR = `[${chalk.stderr.red("error")}]`;
+const WARN = `[${chalk.stderr.yellow("warn")}]`;
+const SUCCESS = `[${chalk.green("success")}]`;
+
+const dataFilePath = `${process.cwd()}/public/data.geojson`;
 
 const main = async () => {
   let csvText;
   try {
     csvText = (await axios(DATA_URL)).data;
   } catch (error) {
-    console.error(
-      `CSV の取得に失敗しました。${DATA_URL} から正しいレスポンスが得られませんでした。`
-    );
-    console.error(error);
+    process.stderr.write(`${ERROR} CSV の取得に失敗しました。\n`);
     process.exit(1);
   }
 
   parse(csvText, (error, data) => {
     if (error) {
-      console.error("CSV のパースに失敗しました。");
-      console.error(error);
+      process.stderr.write(`${ERROR} CSV のパースに失敗しました。\n`);
       process.exit(2);
     }
     const [header, ...records] = data;
 
     const features = records.map((record) => {
-      const properties = reservedColumns.reduce((prev, column) => {
+      const properties = header.reduce((prev, column) => {
         const value = record[header.indexOf(column)];
         if (value) {
           prev[column] = value;
-        } else {
-          console.warn(`${record[header.indexOf('店名')]} の　${column}　の値が得られませんでした。`)
         }
         return prev;
       }, {});
@@ -59,7 +46,9 @@ const main = async () => {
       delete properties["経度"];
 
       if (!lat || !lng) {
-        console.warn(`${properties['店名']} の緯度経度の値が不正です。緯度: ${lat}, 経度: ${lng}`)
+        process.stderr.write(
+          `${WARN} 店名「${properties["店名"]}」の緯度または経度の値が正しくありません。このデータは除外されます。緯度: ${lat}, 経度: ${lng}\n`
+        );
         return null;
       } else {
         return {
@@ -79,6 +68,8 @@ const main = async () => {
     };
 
     fs.writeFileSync(dataFilePath, JSON.stringify(geojson, null, 2));
+
+    process.stdout.write(`${SUCCESS} データの生成に成功しました。\n`);
     process.exit(0);
   });
 };
