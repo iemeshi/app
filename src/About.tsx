@@ -15,7 +15,7 @@ const Content = () => {
         <div className="logo">イエメシ</div>
       </div>
 
-      <h1>{config.name}</h1>
+      <h1>{config.title}</h1>
       <h2>テイクアウトマップ</h2>
       <div className="qrcode"><QRCode value={url} bgColor="transparent" fgColor="#FFFFFF" /></div>
       <Share />

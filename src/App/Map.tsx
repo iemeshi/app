@@ -1,8 +1,6 @@
 import React from "react";
-
-import config from '../config.json'
-// @ts-ignore
 import data from '../data.json'
+import config from '../config.json'
 
 type Props = {
 };
@@ -34,9 +32,9 @@ class Map extends React.Component<Props> {
         style={mapStyle}
         ref={this.container}
         data-geolocate-control="on"
-        data-lat={config.lat}
-        data-lng={config.lng}
-        data-zoom={config.zoom}
+        data-lat={config.map.lat}
+        data-lng={config.map.lng}
+        data-zoom={config.map.zoom}
         data-marker="off"
         data-gesture-handling="off"
       ></div>
