@@ -1,6 +1,8 @@
 import React from "react";
 
 import config from '../config.json'
+// @ts-ignore
+import data from '../data.json'
 
 type Props = {
 };
@@ -16,6 +18,9 @@ class Map extends React.Component<Props> {
   componentDidMount() {
     // @ts-ignore
     const { geolonia } = window;
+
+    console.log(data)
+
     const map = new geolonia.Map(this.container.current);
     window.addEventListener('resize', () => {
       map.resize()

@@ -11,7 +11,7 @@ let yamlText;
 try {
   yamlText = fs.readFileSync(configFilePath).toString();
 } catch (error) {
-  console.error(`[error] ${configFilePath} が存在しません。`);
+  process.stderr.write(`${configFilePath} が存在しません。\n`);
   process.exit(1);
 }
 
@@ -19,15 +19,15 @@ let config;
 try {
   config = YAML.parse(yamlText);
 } catch (error) {
-  console.error(
-    `[error] ${configFilePath} は正しい YAML 形式である必要があります。`
+  process.stderr.write(
+    `${configFilePath} は正しい YAML 形式である必要があります。\n`
   );
   process.exit(2);
 }
 
 if (!config) {
-  console.error(
-    `[error] ${configFilePath} は正しい YAML 形式である必要があります。`
+  process.stderr.write(
+    `${configFilePath} は正しい YAML 形式である必要があります。\n`
   );
   process.exit(3);
 }
