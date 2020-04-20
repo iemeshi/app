@@ -27,7 +27,7 @@ description: 和歌山県串本町内でテイクアウトできるお店
 public_url: https://kushimoto.iemeshi.jp
 ```
 
-読み込んだ値は `process.env.REACT_APP_${KEY}` の形式で JavaScript から利用することができます。
+設定した値は `process.env.REACT_APP_${KEY}` の形式で JavaScript や index.html 内で利用することができます。
 また、 `public_url`は特別な値で、プレフィックス無しで利用できます。
 
 
