@@ -20,8 +20,8 @@
     "typescript": "~3.7.2"
   },
   "scripts": {
-    "start": ". ./.env && react-scripts start",
-    "build": ". ./.env && react-scripts build",
+    "start": "$(node bin/config.js) && react-scripts start",
+    "build": "$(node bin/config.js) && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -43,6 +43,7 @@
   "devDependencies": {
     "@types/qrcode.react": "^1.0.0",
     "@types/react-router-dom": "^5.1.4",
-    "node-sass": "^4.13.1"
+    "node-sass": "^4.13.1",
+    "yaml": "^1.9.1"
   }
 }
