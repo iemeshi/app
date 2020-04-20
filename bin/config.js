@@ -5,13 +5,14 @@
 const fs = require("fs");
 const YAML = require("yaml");
 
-const configFilePath = process.cwd() + "/config.yml";
+const srcConfigFilePath = process.cwd() + "/config.yml";
+const distConfigFilePath = process.cwd() + "config.json";
 
 let yamlText;
 try {
-  yamlText = fs.readFileSync(configFilePath).toString();
+  yamlText = fs.readFileSync(srcConfigFilePath).toString();
 } catch (error) {
-  process.stderr.write(`${configFilePath} が存在しません。\n`);
+  process.stderr.write(`${srcConfigFilePath} が存在しません。\n`);
   process.exit(1);
 }
 
@@ -20,22 +21,27 @@ try {
   config = YAML.parse(yamlText);
 } catch (error) {
   process.stderr.write(
-    `${configFilePath} は正しい YAML 形式である必要があります。\n`
+    `${srcConfigFilePath} は正しい YAML 形式である必要があります。\n`
   );
   process.exit(2);
 }
 
 if (!config) {
   process.stderr.write(
-    `${configFilePath} は正しい YAML 形式である必要があります。\n`
+    `${srcConfigFilePath} は正しい YAML 形式である必要があります。\n`
   );
   process.exit(3);
 }
 
 const envText =
   Object.keys(config)
+    // オブジェクト以外は環境変数としても出力する
+    .filter((key) => typeof config[key] === "string" || "number")
     .map((key) => `export REACT_APP_${key.toUpperCase()}=${config[key]}`)
     .join("\n") + "\n";
+
+// 全ての設定は src/config.json として出力する
+fs.writeFileSync(distConfigFilePath, JSON.stringify(config, null, 2));
 
 process.stdout.write(envText);
 process.exit(0);
