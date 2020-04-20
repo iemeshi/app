@@ -34,6 +34,7 @@ class Map extends React.Component<Props> {
         data-zoom={config.zoom}
         data-marker="off"
         data-gesture-handling="off"
+        data-geojson="/data.geojson"
       ></div>
     );
   }
