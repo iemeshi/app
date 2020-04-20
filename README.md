@@ -26,3 +26,13 @@ title: 和歌山県串本町
 description: 和歌山県串本町内でテイクアウトできるお店
 public_url: https://kushimoto.iemeshi.jp
 ```
+
+読み込んだ値は `process.env.REACT_APP_${KEY}` の形式で JavaScript から利用することができます。
+また、 `public_url`は特別な値で、プレフィックス無しで利用できます。
+
+
+```typescript
+process.env.REACT_APP_TITLE === "和歌山県串本町"; // true
+process.env.REACT_APP_DESCRIPTION === "和歌山県串本町内でテイクアウトできるお店" // true
+process.env.PUBLIC_URL = "https://kushimoto.iemeshi.jp"; // true
+```
