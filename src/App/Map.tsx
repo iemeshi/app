@@ -1,10 +1,11 @@
 import React from "react";
+// @ts-ignore
+import data from '../data.json'
 
 // @ts-ignore
-const [lng, lat] = process.env.REACT_APP_CENTER
-  .split(',')
-  .map(value => parseFloat(value))
-
+const lat = parseFloat(process.env.REACT_APP_LAT)
+// @ts-ignore
+const lng = parseFloat(process.env.REACT_APP_LNG)
 // @ts-ignore
 const zoom = parseFloat(process.env.REACT_APP_ZOOM)
 
@@ -22,6 +23,9 @@ class Map extends React.Component<Props> {
   componentDidMount() {
     // @ts-ignore
     const { geolonia } = window;
+
+    console.log(data)
+
     const map = new geolonia.Map(this.container.current);
     window.addEventListener('resize', () => {
       map.resize()
