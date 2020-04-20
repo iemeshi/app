@@ -2,8 +2,5 @@
   "name": "和歌山県串本町",
   "lat": 33.4725,
   "lng": 135.7815,
-  "zoom": 14,
-  "social": {
-    "github": "https://github.com/iemeshi/app"
-  }
+  "zoom": 14
 }
