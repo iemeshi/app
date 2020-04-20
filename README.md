@@ -26,9 +26,9 @@ title: 和歌山県串本町
 description: 和歌山県串本町内でテイクアウトできるお店
 ```
 
-設定した値は `process.env.REACT_APP_${KEY}` の形式で JavaScript や index.html 内で利用することができます。
+設定した値は `process.env.REACT_APP_${KEY}` の形式で JavaScript から利用することができます。
 
-```typescript
+```javascript
 process.env.REACT_APP_TITLE === "和歌山県串本町"; // true
 process.env.REACT_APP_DESCRIPTION === "和歌山県串本町内でテイクアウトできるお店" // true
 ```
