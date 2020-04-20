@@ -23,4 +23,4 @@ yarn-debug.log*
 yarn-error.log*
 
 # data
-public/data.geojson
+src/data.json
