@@ -19,7 +19,17 @@ class Map extends React.Component<Props> {
 
     console.log(data)
 
-    const map = new geolonia.Map(this.container.current);
+    const hours = new Date().getHours()
+    const isDayTime = hours > 6 && hours < 19
+    let style = 'geolonia/basic'
+    if (!isDayTime) {
+      style = 'geolonia/midnight'
+    }
+
+    const map = new geolonia.Map({
+      container: this.container.current,
+      style: style,
+    });
 
     document.addEventListener('visibilitychange', () => {
       if ('visible' === document.visibilityState) {
@@ -46,7 +56,6 @@ class Map extends React.Component<Props> {
         data-zoom={config.map.zoom}
         data-marker="off"
         data-gesture-handling="off"
-        data-style="geolonia/basic"
       ></div>
     );
   }
