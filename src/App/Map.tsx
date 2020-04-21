@@ -10,6 +10,11 @@ const CSS: React.CSSProperties = {
   height: '100%',
 }
 
+const isDayTime = () => {
+  const hours = new Date().getHours()
+  return hours >= 5 && hours < 19
+}
+
 class Map extends React.Component<Props> {
   container = React.createRef<HTMLDivElement>();
 
@@ -19,10 +24,8 @@ class Map extends React.Component<Props> {
 
     console.log(data)
 
-    const hours = new Date().getHours()
-    const isDayTime = hours > 6 && hours < 19
     let style = 'geolonia/basic'
-    if (!isDayTime) {
+    if (!isDayTime()) {
       style = 'geolonia/midnight'
     }
 
@@ -33,9 +36,7 @@ class Map extends React.Component<Props> {
 
     document.addEventListener('visibilitychange', () => {
       if ('visible' === document.visibilityState) {
-        const hours = new Date().getHours()
-        const isDayTime = hours > 6 && hours < 19
-        if (isDayTime) {
+        if (isDayTime()) {
           map.setStyle('geolonia/basic')
         } else {
           map.setStyle('geolonia/midnight')
