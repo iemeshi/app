@@ -5,7 +5,7 @@ import config from '../config.json'
 type Props = {
 };
 
-const mapStyle: React.CSSProperties = {
+const CSS: React.CSSProperties = {
   width: '100%',
   height: '100%',
 }
@@ -20,8 +20,17 @@ class Map extends React.Component<Props> {
     console.log(data)
 
     const map = new geolonia.Map(this.container.current);
-    window.addEventListener('resize', () => {
-      map.resize()
+
+    document.addEventListener('visibilitychange', () => {
+      if ('visible' === document.visibilityState) {
+        const hours = new Date().getHours()
+        const isDayTime = hours > 6 && hours < 19
+        if (isDayTime) {
+          map.setStyle('geolonia/basic')
+        } else {
+          map.setStyle('geolonia/midnight')
+        }
+      }
     })
   }
 
@@ -29,7 +38,7 @@ class Map extends React.Component<Props> {
     return (
       <div
         className="map"
-        style={mapStyle}
+        style={CSS}
         ref={this.container}
         data-geolocate-control="on"
         data-lat={config.map.lat}
@@ -37,6 +46,7 @@ class Map extends React.Component<Props> {
         data-zoom={config.map.zoom}
         data-marker="off"
         data-gesture-handling="off"
+        data-style="geolonia/basic"
       ></div>
     );
   }
