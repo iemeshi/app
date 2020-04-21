@@ -2,7 +2,7 @@ import React from "react";
 import { HashRouter, Route } from "react-router-dom";
 import "./App.scss";
 
-import Map from './App/Map'
+import Home from './App/Home'
 import List from './App/List'
 import AboutUs from './App/AboutUs'
 
@@ -13,7 +13,7 @@ function App() {
     <div className="app">
       <div className="app-body">
         <HashRouter>
-          <Route exact path="/" component={Map} />
+          <Route exact path="/" component={Home} />
           <Route exact path="/list" component={List} />
           <Route exact path="/about" component={AboutUs} />
         </HashRouter>
