@@ -2,6 +2,8 @@ import React from "react";
 import data from '../data.json'
 import config from '../config.json'
 
+import toGeoJson from './toGeoJson'
+
 type Props = {
   orientation: any;
 };
@@ -24,7 +26,7 @@ const Content = (props: Props) => {
       return
     }
 
-    console.log(data)
+    const geojson = toGeoJson(data)
 
     // @ts-ignore
     const { geolonia } = window;
