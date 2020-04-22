@@ -11,7 +11,7 @@ type Data = {
 
 type Props = {
   orientation: any;
-  data: Data;
+  data: Data | undefined;
 };
 
 const CSS: React.CSSProperties = {

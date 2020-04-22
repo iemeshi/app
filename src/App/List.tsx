@@ -1,7 +1,14 @@
 import React from "react";
 
+type Data = {
+  [key: string]: string;
+}
 
-const Content = () => {
+type Props = {
+  data: Data | undefined;
+};
+
+const Content = (props: Props) => {
   return (
     <>List</>
   );
