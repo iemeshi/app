@@ -24,6 +24,8 @@ const Content = (props: Props) => {
       return
     }
 
+    console.log(data)
+
     // @ts-ignore
     const { geolonia } = window;
 
