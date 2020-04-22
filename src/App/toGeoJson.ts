@@ -52,8 +52,6 @@ const toGeoJson = (data: any) => {
     geojson.features.push(feature)
   }
 
-  console.log(geojson)
-
   return geojson
 }
 

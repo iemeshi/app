@@ -1,17 +1,16 @@
 import React from "react";
-import config from '../config.json'
 // @ts-ignore
 import geojsonExtent from '@mapbox/geojson-extent'
 import toGeoJson from './toGeoJson'
 import setCluster from './setCluster'
 
-type Data = {
+type ShopData = {
   [key: string]: string;
 }
 
 type Props = {
   orientation: any;
-  data: Data | undefined;
+  data: ShopData[];
 };
 
 const CSS: React.CSSProperties = {

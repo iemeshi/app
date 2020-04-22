@@ -11,12 +11,12 @@ import Tabbar from './App/Tabbar'
 import csvParser from 'csv-parse'
 import config from './config.json'
 
-type Data = {
+type ShopData = {
   [key: string]: string;
 }
 
 const App = () => {
-  const [ data, setData ] = React.useState<Data | undefined>()
+  const [ data, setData ] = React.useState<ShopData[]>([])
 
   React.useEffect(() => {
     fetch(config.data_url)

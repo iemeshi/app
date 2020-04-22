@@ -1,16 +1,26 @@
 import React from "react";
+import ShopListItem from './ShopListItem'
 
-type Data = {
+import './List.scss'
+
+type ShopData = {
   [key: string]: string;
 }
 
 type Props = {
-  data: Data | undefined;
+  data: ShopData[];
 };
 
 const Content = (props: Props) => {
+
+  const shops = props.data.map((shop, key) =>
+    <li key={key}><ShopListItem data={shop} /></li>
+  )
+
   return (
-    <>List</>
+    <div className="shop-list">
+      <ul>{shops}</ul>
+    </div>
   );
 };
 

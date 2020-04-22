@@ -1,12 +1,12 @@
 import React from "react";
 import Map from "./Map"
 
-type Data = {
+type ShopData = {
   [key: string]: string;
 }
 
 type Props = {
-  data: Data | undefined;
+  data: ShopData[];
 };
 
 const Content = (props: Props) => {
