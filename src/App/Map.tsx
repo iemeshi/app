@@ -36,8 +36,8 @@ const setCluster = (map: any) => {
       'text-color': '#FFFFFF',
     },
     layout: {
-      'text-field': '{point_count_abbreviated}',
-      'text-size': 14,
+      'text-field': '{point_count_abbreviated} 件',
+      'text-size': 12,
       'text-font': ['Noto Sans Regular'],
     },
   })
