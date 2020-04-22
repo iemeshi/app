@@ -8,24 +8,12 @@ CACHE MANIFEST
 
 
 
-demoimages/clownfish.jpg
-
-demoimages/clownfishsmall.jpg
-
-demoimages/flowingrock.jpg
-
-demoimages/flowingrocksmall.jpg
-
-demoimages/stones.jpg
-
-
-
 NETWORK:
 
 # All URLs that start with the following lines
 # are whitelisted.
 
-https://kushimoto.iemeshi.jp/#/
+https://kushimoto.iemeshi.jp/
 
 
 CACHE:
