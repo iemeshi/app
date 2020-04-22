@@ -28,7 +28,13 @@ const toGeoJson = (data: object[]) => {
     features: []
   } as GeoJSON
 
-  data.forEach((item: itemObject) => {
+  for (let i = 0; i < data.length; i++) {
+    const item = data[i] as itemObject
+
+    if (!item['経度'] || !item['緯度'] || !item['店名']) {
+      return;
+    }
+
     const feature = {
       type: "Feature",
       geometry: {
@@ -38,12 +44,15 @@ const toGeoJson = (data: object[]) => {
       properties: {}
     } as Feature
 
-    Object.keys(item).forEach((key) => {
+    for (let i = 0; i < Object.keys(item).length; i++) {
+      const key = Object.keys(item)[i]
       feature.properties[key] = item[key]
-    })
+    }
 
     geojson.features.push(feature)
-  })
+  }
+
+  console.log(geojson)
 
   return geojson
 }
