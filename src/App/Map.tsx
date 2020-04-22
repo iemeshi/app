@@ -136,6 +136,14 @@ const Content = (props: Props) => {
         },
       })
 
+      map.on('mouseenter', 'shop-points', function () {
+        map.getCanvas().style.cursor = 'pointer'
+      })
+
+      map.on('mouseleave', 'shop-points', function () {
+        map.getCanvas().style.cursor = ''
+      })
+
       map.addLayer({
         id: 'shop-symbol',
         type: 'symbol',
