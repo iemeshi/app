@@ -1,11 +1,9 @@
 import React from "react";
-// import data from '../data.json'
 import config from '../config.json'
 // @ts-ignore
 import geojsonExtent from '@mapbox/geojson-extent'
 import toGeoJson from './toGeoJson'
 import setCluster from './setCluster'
-import csvParser from 'csv-parse'
 
 type Data = {
   [key: string]: string;
@@ -13,6 +11,7 @@ type Data = {
 
 type Props = {
   orientation: any;
+  data: Data;
 };
 
 const CSS: React.CSSProperties = {
@@ -23,43 +22,16 @@ const CSS: React.CSSProperties = {
 const Content = (props: Props) => {
   const mapNode = React.useRef<HTMLDivElement>(null);
   const [ mapObject, setMapObject ] = React.useState<any>()
-  const [ data, setData ] = React.useState<Data | undefined>()
 
   React.useEffect(() => {
-    fetch(config.data_url)
-    .then((response) => {
-      return response.ok ? response.text() : Promise.reject(response.status);
-    })
-    .then((data) => {
-      csvParser(data, (error, data) => {
-        const [header, ...records] = data;
-
-        const features = records.map((record: string) => {
-          const properties = header.reduce((prev: any, column: any) => {
-            const value = record[header.indexOf(column)];
-            if (value) {
-              prev[column] = value;
-            }
-            return prev;
-          }, {});
-
-          return properties;
-        });
-
-        setData(features)
-      });
-    });
-  }, [])
-
-  React.useEffect(() => {
-    if (!mapObject || !data) {
+    if (!mapObject || !props.data) {
       return
     }
 
     const textColor = '#000000'
     const textHaloColor = '#FFFFFF'
 
-    const geojson = toGeoJson(data)
+    const geojson = toGeoJson(props.data)
     const bounds = geojsonExtent(geojson)
     mapObject.fitBounds(bounds, {
       duration: 0,
@@ -123,7 +95,7 @@ const Content = (props: Props) => {
     })
 
     setCluster(mapObject)
-  }, [mapObject, data])
+  }, [mapObject, props.data])
 
   React.useEffect(() => {
     if (!mapNode.current) {
