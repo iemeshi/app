@@ -22,7 +22,7 @@ type GeoJSON = {
   features: Feature[]
 }
 
-const toGeoJson = (data: object[]) => {
+const toGeoJson = (data: any) => {
   const geojson = {
     type: "FeatureCollection",
     features: []
