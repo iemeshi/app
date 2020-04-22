@@ -3,6 +3,7 @@ import data from '../data.json'
 import config from '../config.json'
 
 type Props = {
+  orientation: any;
 };
 
 const CSS: React.CSSProperties = {
@@ -15,22 +16,37 @@ const isDayTime = () => {
   return hours >= 5 && hours < 19
 }
 
-class Map extends React.Component<Props> {
-  container = React.createRef<HTMLDivElement>();
+const Content = (props: Props) => {
+  const mapNode = React.useRef<HTMLDivElement>(null);
 
-  componentDidMount() {
+  React.useEffect(() => {
+    if (!mapNode.current) {
+      return
+    }
+
     // @ts-ignore
     const { geolonia } = window;
-
-    console.log(data)
 
     let style = 'geolonia/basic'
     if (!isDayTime()) {
       style = 'geolonia/midnight'
     }
 
+    const container = document.createElement('div')
+    container.dataset.geolocateControl = 'on'
+    container.dataset.lat = `${config.map.lat}`
+    container.dataset.lng = `${config.map.lng}`
+    container.dataset.zoom = `${config.map.zoom}`
+    container.dataset.marker = 'off'
+    container.dataset.gestureHandling = 'off'
+    container.style.width = '100%'
+    container.style.height = '100%'
+
+    mapNode.current.innerHTML = ''
+    mapNode.current.appendChild(container)
+
     const map = new geolonia.Map({
-      container: this.container.current,
+      container: container,
       style: style,
     });
 
@@ -43,23 +59,11 @@ class Map extends React.Component<Props> {
         }
       }
     })
-  }
+  }, [mapNode, props.orientation])
 
-  render() {
-    return (
-      <div
-        className="map"
-        style={CSS}
-        ref={this.container}
-        data-geolocate-control="on"
-        data-lat={config.map.lat}
-        data-lng={config.map.lng}
-        data-zoom={config.map.zoom}
-        data-marker="off"
-        data-gesture-handling="off"
-      ></div>
-    );
-  }
-}
+  return (
+    <div ref={mapNode} style={CSS}></div>
+  );
+};
 
-export default Map;
+export default Content;
