@@ -1,0 +1,40 @@
+CACHE MANIFEST
+
+# This is a comment.
+# Cache manifest version 0.0.1
+# If you change the version number in this comment,
+# the cache manifest is no longer byte-for-byte
+# identical.
+
+
+
+demoimages/clownfish.jpg
+
+demoimages/clownfishsmall.jpg
+
+demoimages/flowingrock.jpg
+
+demoimages/flowingrocksmall.jpg
+
+demoimages/stones.jpg
+
+
+
+NETWORK:
+
+# All URLs that start with the following lines
+# are whitelisted.
+
+https://kushimoto.iemeshi.jp/#/
+
+
+CACHE:
+
+# Additional items to cache.
+# demoimages/stonessmall.jpg
+
+
+
+FALLBACK:
+
+# demoimages/currentImg.jpg images/stockImage.jpg
