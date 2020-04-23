@@ -75,7 +75,9 @@ const Content = (props: Props) => {
     })
 
     mapObject.on('click', 'shop-points', (event: any) => {
-      window.location.hash = `/shop/${event.features[0].properties._id}`
+      if (event.features[0].properties._id) {
+        window.location.hash = `/shop/${event.features[0].properties._id}`
+      }
     })
 
     mapObject.addLayer({
