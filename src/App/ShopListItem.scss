@@ -1,0 +1,49 @@
+.shop-link
+{
+  display: block;
+  padding: 0;
+  color: #555555;
+  padding-right: 32px;
+  text-align: left;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  border: none;
+  width: 100%;
+
+  .right
+  {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
+
+  h2
+  {
+    font-size: 16px;
+  }
+
+  .description
+  {
+    font-size: 14px;
+  }
+
+  .links
+  {
+    margin-top: 12px;
+    margin-bottom: 0;
+  }
+
+  sup
+  {
+    font-size: 10px;
+    font-weight: normal;
+    background-color: #f5b041;
+    color: #ffffff;
+    padding: 3px;
+    border-radius: 6px;
+  }
+}

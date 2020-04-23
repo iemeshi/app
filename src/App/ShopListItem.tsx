@@ -2,6 +2,8 @@ import React from "react";
 import Links from './Links'
 import { BsChevronCompactRight } from 'react-icons/bs'
 
+import './ShopListItem.scss'
+
 type ShopData = {
   [key: string]: string;
 }
@@ -21,12 +23,12 @@ const Content = (props: Props) => {
   return (
     <>
       <button className="shop-link" onClick={clickHandler}>
-        <h2>{props.data['店名']}</h2>
+        <h2>{props.data['店名']} <sup>{props.data['ジャンル']}</sup></h2>
         <div className="description">{props.data['紹介文']}</div>
         {props.data['営業時間']?<div className="hours">営業時間: {props.data['営業時間']}</div>:''}
         <div className="right"><BsChevronCompactRight size="40px" color="#CCCCCC" /></div>
+        <Links data={props.data} />
       </button>
-      <Links data={props.data} />
     </>
   );
 };
