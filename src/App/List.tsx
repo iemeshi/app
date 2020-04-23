@@ -14,13 +14,11 @@ type Props = {
 const Content = (props: Props) => {
 
   const shops = props.data.map((shop, key) =>
-    <li key={key}><ShopListItem data={shop} /></li>
+    <div key={key} className="shop"><ShopListItem index={key} data={shop} /></div>
   )
 
   return (
-    <div className="shop-list">
-      <ul>{shops}</ul>
-    </div>
+    <div className="shop-list">{shops}</div>
   );
 };
 

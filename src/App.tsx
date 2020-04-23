@@ -15,6 +15,12 @@ type ShopData = {
   [key: string]: string;
 }
 
+const zen2han = (str: string) => {
+  return str.replace(/[！-～]/g, function(s: string) {
+    return String.fromCharCode(s.charCodeAt(0) - 0xFEE0);
+  }).replace(/　/g, ' ');
+}
+
 const App = () => {
   const [ data, setData ] = React.useState<ShopData[]>([])
 
@@ -30,16 +36,21 @@ const App = () => {
         const features = records.map((record: string) => {
           const properties = header.reduce((prev: any, column: any) => {
             const value = record[header.indexOf(column)];
-            if (value) {
-              prev[column] = value;
-            }
+            prev[column] = zen2han(value);
             return prev;
           }, {});
 
           return properties;
         });
 
-        setData(features)
+        const shopData = []
+        for (let i = 0; i < features.length; i++) {
+          if (features[i]['緯度'] && features[i]['経度'] && features[i]['店名']) {
+            shopData.push(features[i])
+          }
+        }
+
+        setData(shopData)
       });
     });
   }, [])

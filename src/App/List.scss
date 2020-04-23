@@ -1,0 +1,63 @@
+.shop-list
+{
+  color: #555555;
+  box-sizing: border-box;
+  height: 100%;
+  overflow: scroll;
+
+  .shop
+  {
+    border-bottom: 1px solid #EEEEEE;
+    padding: 16px;
+    font-size: 12px;
+    position: relative;
+
+    .shop-link
+    {
+      display: block;
+      padding-bottom: 20px;
+      color: #555555;
+      padding-right: 32px;
+
+      .right
+      {
+        position: absolute;
+        top: 50%;
+        right: 16px;
+        -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+      }
+    }
+
+    h2
+    {
+      font-size: 16px;
+    }
+
+    .description
+    {
+      font-size: 14px;
+    }
+
+    .links
+    {
+      margin-top: 12px;
+      margin-bottom: 0;
+      position: absolute;
+      bottom: 0;
+      left: 16px;
+    }
+
+    .link
+    {
+      display: inline;
+      margin: 0 8px 0 0;
+    }
+  }
+
+  .shop:nth-child(even)
+  {
+    background-color: #f5f5f5;
+  }
+}
