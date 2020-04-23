@@ -9,18 +9,23 @@ type ShopData = {
 type Props = {
   data: ShopData;
   index: string;
+  popupHandler: Function;
 };
 
 const Content = (props: Props) => {
+  const clickHandler = () => {
+    console.log(props.index)
+    props.popupHandler(props.index)
+  }
 
   return (
     <>
-      <a className="shop-link" href={`#/shop/${props.index}`}>
+      <button className="shop-link" onClick={clickHandler}>
         <h2>{props.data['店名']}</h2>
         <div className="description">{props.data['紹介文']}</div>
         {props.data['営業時間']?<div className="hours">営業時間: {props.data['営業時間']}</div>:''}
         <div className="right"><BsChevronCompactRight size="40px" color="#CCCCCC" /></div>
-      </a>
+      </button>
       <Links data={props.data} />
     </>
   );

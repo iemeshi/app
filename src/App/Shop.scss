@@ -1,6 +1,13 @@
 .shop-single
 {
-  height: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  z-index: 10;
+  background-color: #FFFFFF;
 
   .container
   {
@@ -15,29 +22,23 @@
     padding: 0 16px;
     background-color: #000000;
     box-sizing: border-box;
-    line-height: 44px;
+    height: 44px;
+    position: relative;
 
     button
     {
-      position: relative;
       background-color: transparent;
       margin: 0;
       padding: 0;
-      padding-left: 16px;
       border: none;
-      color: #ffffff;
-      font-size: 12px;
-      line-height: 12px;
-
-      svg
-      {
-        position: absolute;
-        top: 50%;
-        left: 0;
-        -webkit-transform: translateY(-50%);
-        -ms-transform: translateY(-50%);
-        transform: translateY(-50%);
-      }
+      position: absolute;
+      top: 50%;
+      right: 16px;
+      -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+      transform: translateY(-50%);
+      width: 20px;
+      height: 20px;
     }
   }
 }

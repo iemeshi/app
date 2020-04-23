@@ -1,8 +1,7 @@
 import React from "react";
 
 import './Shop.scss'
-import { BsChevronLeft } from 'react-icons/bs'
-import { useParams, useHistory } from "react-router-dom";
+import { AiOutlineClose } from 'react-icons/ai'
 
 type ShopData = {
   [key: string]: string;
@@ -14,27 +13,27 @@ type ShopList = {
 
 type Props = {
   data: ShopList;
+  shopId: string;
+  close: Function;
 }
 
 const Content = (props: Props) => {
-  const { id } = useParams()
-  const history = useHistory()
   const [ shop, setShop ] = React.useState<ShopData>({})
 
   React.useEffect(() => {
-    if (id) {
-      setShop(props.data[id])
+    if (props.shopId) {
+      setShop(props.data[props.shopId])
     }
-  }, [id, props.data])
+  }, [props.shopId, props.data])
 
-  const goBack = () => {
-    history.goBack()
+  const clickHandler = () => {
+    props.close()
   }
 
   return (
     <div className="shop-single">
       <div className="head">
-        <button onClick={goBack}><BsChevronLeft /> 戻る</button>
+        <button onClick={clickHandler}><AiOutlineClose size="20px" color="#FFFFFF" /></button>
       </div>
       <div className="container">
         {shop?

@@ -1,7 +1,7 @@
 import React from "react";
 import ShopListItem from './ShopListItem'
+import Shop from './Shop'
 import './List.scss'
-import { useHistory } from "react-router-dom";
 
 type ShopData = {
   [key: string]: string;
@@ -16,19 +16,30 @@ type Props = {
 }
 
 const Content = (props: Props) => {
-  const history = useHistory()
+  const [ id, setId ] = React.useState<string>('')
 
-  React.useEffect(() => {
-    history.push("/list");
-  }, [history])
+  const popupHandler = (id: string) => {
+    setId(id)
+  }
+
+  const closeHandler = () => {
+    setId('')
+  }
 
   const shops = []
   for (const key in props.data) {
-    shops.push(<div key={key} className="shop"><ShopListItem index={key} data={props.data[key]} /></div>)
+    shops.push(<div key={key} className="shop"><ShopListItem index={key} data={props.data[key]} popupHandler={popupHandler} /></div>)
   }
 
   return (
-    <div className="shop-list">{shops}</div>
+    <div className="shop-list">
+      {shops}
+      {id?
+        <Shop data={props.data} shopId={id} close={closeHandler} />
+        :
+        <></>
+      }
+    </div>
   );
 };
 

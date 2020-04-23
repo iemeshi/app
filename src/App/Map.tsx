@@ -3,6 +3,7 @@ import React from "react";
 import geojsonExtent from '@mapbox/geojson-extent'
 import toGeoJson from './toGeoJson'
 import setCluster from './setCluster'
+import Shop from './Shop'
 
 type ShopData = {
   [key: string]: string;
@@ -20,11 +21,13 @@ type Props = {
 const CSS: React.CSSProperties = {
   width: '100%',
   height: '100%',
+  position: 'relative',
 }
 
 const Content = (props: Props) => {
   const mapNode = React.useRef<HTMLDivElement>(null);
   const [ mapObject, setMapObject ] = React.useState<any>()
+  const [ id, setId ] = React.useState<string>('')
 
   React.useEffect(() => {
     if (!mapObject || !props.data) {
@@ -76,7 +79,7 @@ const Content = (props: Props) => {
 
     mapObject.on('click', 'shop-points', (event: any) => {
       if (event.features[0].properties._id) {
-        window.location.hash = `/shop/${event.features[0].properties._id}`
+        setId(event.features[0].properties._id)
       }
     })
 
@@ -141,8 +144,19 @@ const Content = (props: Props) => {
 
   }, [mapNode, props.orientation])
 
+  const closeHandler = () => {
+    setId('')
+  }
+
   return (
-    <div ref={mapNode} style={CSS}></div>
+    <div style={CSS}>
+      <div ref={mapNode} style={CSS}></div>
+      {id?
+        <Shop data={props.data} shopId={id} close={closeHandler} />
+        :
+        <></>
+      }
+    </div>
   );
 };
 
