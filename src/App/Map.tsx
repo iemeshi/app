@@ -28,25 +28,19 @@ const Content = (props: Props) => {
   const mapNode = React.useRef<HTMLDivElement>(null);
   const [ mapObject, setMapObject ] = React.useState<any>()
   const [ id, setId ] = React.useState<string>('')
+  const [ geoJson, setGeoJson ] = React.useState<any>({})
 
   React.useEffect(() => {
-    if (!mapObject || !props.data) {
+    if (!mapObject || !geoJson) {
       return
     }
 
     const textColor = '#000000'
     const textHaloColor = '#FFFFFF'
 
-    const geojson = toGeoJson(props.data)
-    const bounds = geojsonExtent(geojson)
-    mapObject.fitBounds(bounds, {
-      duration: 0,
-      padding: 100,
-    })
-
     mapObject.addSource('shops', {
       type: 'geojson',
-      data: geojson,
+      data: geoJson,
       cluster: true,
       clusterMaxZoom: 14,
       clusterRadius: 50,
@@ -107,7 +101,7 @@ const Content = (props: Props) => {
     })
 
     setCluster(mapObject)
-  }, [mapObject, props.data])
+  }, [mapObject, geoJson])
 
   React.useEffect(() => {
     if (!mapNode.current) {
@@ -129,9 +123,15 @@ const Content = (props: Props) => {
     mapNode.current.innerHTML = ''
     mapNode.current.appendChild(container)
 
+    const geojson = toGeoJson(props.data)
+    setGeoJson(geojson)
+    const bounds = geojsonExtent(geojson)
+
     const map = new geolonia.Map({
       container: container,
       style: style,
+      bounds: bounds,
+      fitBoundsOptions: {padding: 100}
     });
 
     map.on('load', () => {
@@ -142,7 +142,7 @@ const Content = (props: Props) => {
       setMapObject(map)
     })
 
-  }, [mapNode, props.orientation])
+  }, [mapNode, props.orientation, props.data])
 
   const closeHandler = () => {
     setId('')
