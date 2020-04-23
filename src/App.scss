@@ -11,8 +11,19 @@ a
 
 .app-footer
 {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
   height: 50px;
   background-color: #ffffff;
   border-top: 1px solid #cccccc;
   --safe-area-inset-bottom: env(safe-area-inset-bottom);
+  z-index: 9999;
+}
+
+@media only screen and (max-width: 960px) {
+  .app-footer
+  {
+    position: fixed;
+  }
 }
