@@ -37,7 +37,10 @@ const Content = (props: Props) => {
     }
 
     // @ts-ignore
-    const map = new window.geolonia.Map(mapNode.current);
+    new window.geolonia.Map({
+      container: mapNode.current,
+      interactive: false,
+    });
   }, [shop, mapNode])
 
   return (
@@ -69,6 +72,7 @@ const Content = (props: Props) => {
               data-lat={shop['緯度']}
               data-lng={shop['経度']}
               data-zoom="14"
+              data-navigation-control="off"
             ></div>
 
             <p><a href={`http://maps.apple.com/?q=${shop['緯度']},${shop['経度']}`}>お店までの道順</a></p>
