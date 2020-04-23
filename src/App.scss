@@ -17,7 +17,7 @@ a
   height: 50px;
   background-color: #ffffff;
   border-top: 1px solid #cccccc;
-  --safe-area-inset-bottom: env(safe-area-inset-bottom);
+  padding-bottom: env(safe-area-inset-bottom);
   z-index: 9999;
 }
 
