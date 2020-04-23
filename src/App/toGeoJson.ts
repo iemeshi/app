@@ -28,8 +28,8 @@ const toGeoJson = (data: any) => {
     features: []
   } as GeoJSON
 
-  for (let i = 0; i < data.length; i++) {
-    const item = data[i] as itemObject
+  for (const id in data) {
+    const item = data[id] as itemObject
 
     if (!item['経度'] || !item['緯度'] || !item['店名']) {
       return;
@@ -41,7 +41,7 @@ const toGeoJson = (data: any) => {
         type: "Point",
         coordinates: [Number(item['経度']), Number(item['緯度'])]
       },
-      properties: {}
+      properties: {_id: id}
     } as Feature
 
     for (let i = 0; i < Object.keys(item).length; i++) {
