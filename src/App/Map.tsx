@@ -131,6 +131,10 @@ const Content = (props: Props) => {
       setMapObject(map)
     })
 
+    window.addEventListener('orientationchange', () => {
+      map.resize()
+    })
+
   }, [mapNode, props.data])
 
   const closeHandler = () => {
