@@ -16,14 +16,8 @@ type Props = {
 const Content = (props: Props) => {
   const [ orientation, setOrientation] = React.useState<any>(window.orientation)
 
-  React.useEffect(() => {
-    window.addEventListener('orientationchange', () => {
-      setOrientation(window.orientation)
-    })
-  }, [])
-
   return (
-    <><Map orientation={orientation} data={props.data} /></>
+    <><Map data={props.data} /></>
   );
 };
 

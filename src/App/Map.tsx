@@ -14,7 +14,6 @@ type ShopList = {
 }
 
 type Props = {
-  orientation: any;
   data: ShopList;
 };
 
@@ -28,19 +27,20 @@ const Content = (props: Props) => {
   const mapNode = React.useRef<HTMLDivElement>(null);
   const [ mapObject, setMapObject ] = React.useState<any>()
   const [ id, setId ] = React.useState<string>('')
-  const [ geoJson, setGeoJson ] = React.useState<any>({})
 
   React.useEffect(() => {
-    if (!mapObject || !geoJson) {
+    if (!mapObject || !props.data) {
       return
     }
 
     const textColor = '#000000'
     const textHaloColor = '#FFFFFF'
 
+    const geojson = toGeoJson(props.data)
+
     mapObject.addSource('shops', {
       type: 'geojson',
-      data: geoJson,
+      data: geojson,
       cluster: true,
       clusterMaxZoom: 14,
       clusterRadius: 50,
@@ -101,7 +101,7 @@ const Content = (props: Props) => {
     })
 
     setCluster(mapObject)
-  }, [mapObject, geoJson])
+  }, [mapObject, props.data])
 
   React.useEffect(() => {
     if (!mapNode.current) {
@@ -113,22 +113,11 @@ const Content = (props: Props) => {
 
     const style = 'geolonia/basic'
 
-    const container = document.createElement('div')
-    container.dataset.geolocateControl = 'on'
-    container.dataset.marker = 'off'
-    container.dataset.gestureHandling = 'off'
-    container.style.width = '100%'
-    container.style.height = '100%'
-
-    mapNode.current.innerHTML = ''
-    mapNode.current.appendChild(container)
-
     const geojson = toGeoJson(props.data)
-    setGeoJson(geojson)
     const bounds = geojsonExtent(geojson)
 
     const map = new geolonia.Map({
-      container: container,
+      container: mapNode.current,
       style: style,
       bounds: bounds,
       fitBoundsOptions: {padding: 100}
@@ -142,7 +131,7 @@ const Content = (props: Props) => {
       setMapObject(map)
     })
 
-  }, [mapNode, props.orientation, props.data])
+  }, [mapNode, props.data])
 
   const closeHandler = () => {
     setId('')
@@ -150,7 +139,13 @@ const Content = (props: Props) => {
 
   return (
     <div style={CSS}>
-      <div ref={mapNode} style={CSS}></div>
+      <div
+        ref={mapNode}
+        style={CSS}
+        data-geolocate-control="on"
+        data-marker="off"
+        data-gesture-handling="off"
+      ></div>
       {id?
         <Shop data={props.data} shopId={id} close={closeHandler} />
         :
