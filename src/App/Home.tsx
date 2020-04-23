@@ -6,9 +6,13 @@ type ShopData = {
   [key: string]: string;
 }
 
+type ShopList = {
+  [key: string]: ShopData
+}
+
 type Props = {
-  data: ShopData[];
-};
+  data: ShopList;
+}
 
 const Content = (props: Props) => {
   const history = useHistory()

@@ -8,9 +8,13 @@ type ShopData = {
   [key: string]: string;
 }
 
+type ShopList = {
+  [key: string]: ShopData
+}
+
 type Props = {
   orientation: any;
-  data: ShopData[];
+  data: ShopList;
 };
 
 const CSS: React.CSSProperties = {
@@ -62,12 +66,16 @@ const Content = (props: Props) => {
       },
     })
 
-    mapObject.on('mouseenter', 'shop-points', function () {
+    mapObject.on('mouseenter', 'shop-points', () => {
       mapObject.getCanvas().style.cursor = 'pointer'
     })
 
-    mapObject.on('mouseleave', 'shop-points', function () {
+    mapObject.on('mouseleave', 'shop-points', () => {
       mapObject.getCanvas().style.cursor = ''
+    })
+
+    mapObject.on('click', 'shop-points', (event: any) => {
+      console.log(event.features[0].properties)
     })
 
     mapObject.addLayer({

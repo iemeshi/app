@@ -7,9 +7,13 @@ type ShopData = {
   [key: string]: string;
 }
 
+type ShopList = {
+  [key: string]: ShopData
+}
+
 type Props = {
-  data: ShopData[];
-};
+  data: ShopList;
+}
 
 const Content = (props: Props) => {
   const history = useHistory()
@@ -18,9 +22,10 @@ const Content = (props: Props) => {
     history.push("/list");
   }, [history])
 
-  const shops = props.data.map((shop, key) =>
-    <div key={key} className="shop"><ShopListItem index={key} data={shop} /></div>
-  )
+  const shops = []
+  for (const key in props.data) {
+    shops.push(<div key={key} className="shop"><ShopListItem index={key} data={props.data[key]} /></div>)
+  }
 
   return (
     <div className="shop-list">{shops}</div>

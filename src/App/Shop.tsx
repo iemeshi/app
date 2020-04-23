@@ -8,20 +8,24 @@ type ShopData = {
   [key: string]: string;
 }
 
+type ShopList = {
+  [key: string]: ShopData
+}
+
 type Props = {
-  data: ShopData[];
-};
+  data: ShopList;
+}
 
 const Content = (props: Props) => {
-  const { index } = useParams()
+  const { id } = useParams()
   const history = useHistory()
   const [ shop, setShop ] = React.useState<ShopData>({})
 
   React.useEffect(() => {
-    if (index) {
-      setShop(props.data[Number(index)])
+    if (id) {
+      setShop(props.data[id])
     }
-  }, [index, props.data])
+  }, [id, props.data])
 
   const goBack = () => {
     history.goBack()
@@ -35,6 +39,7 @@ const Content = (props: Props) => {
       <div className="container">
         {shop?
           <>
+            <h2>{shop['店名']}</h2>
           </>
           :
           <></>

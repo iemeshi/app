@@ -8,7 +8,7 @@ type ShopData = {
 
 type Props = {
   data: ShopData;
-  index: number;
+  index: string;
 };
 
 const Content = (props: Props) => {
