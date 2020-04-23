@@ -1,0 +1,43 @@
+.shop-single
+{
+  height: 100%;
+
+  .container
+  {
+    height: calc(100% - 44px);
+    box-sizing: border-box;
+    padding: 16px;
+    overflow: scroll;
+  }
+
+  .head
+  {
+    padding: 0 16px;
+    background-color: #000000;
+    box-sizing: border-box;
+    line-height: 44px;
+
+    button
+    {
+      position: relative;
+      background-color: transparent;
+      margin: 0;
+      padding: 0;
+      padding-left: 16px;
+      border: none;
+      color: #ffffff;
+      font-size: 12px;
+      line-height: 12px;
+
+      svg
+      {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+      }
+    }
+  }
+}
