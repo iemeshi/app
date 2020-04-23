@@ -14,8 +14,6 @@ type Props = {
 }
 
 const Content = (props: Props) => {
-  const [ orientation, setOrientation] = React.useState<any>(window.orientation)
-
   return (
     <><Map data={props.data} /></>
   );
