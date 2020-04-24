@@ -2,6 +2,7 @@ import React from "react";
 import Links from './Links'
 import './Shop.scss'
 import { AiOutlineClose } from 'react-icons/ai'
+import { makeDistanceLabelText } from "./distance-label";
 
 type Props = {
   shop: Iemeshi.ShopData;
@@ -28,6 +29,7 @@ const Content = (props: Props) => {
     });
   }, [shop, mapNode])
 
+  const distanceTipText = makeDistanceLabelText(shop.distance)
 
   return (
     <div className="shop-single">
@@ -38,7 +40,10 @@ const Content = (props: Props) => {
         {shop?
           <>
             <h2>{shop['店名']}</h2>
-            <div><sup>{shop['ジャンル']}</sup></div>
+            <div>
+              <sup className="category">{shop['ジャンル']}</sup>
+              {distanceTipText && <sup className="distance">{distanceTipText}</sup> }
+            </div>
 
             <div style={{margin: "24px 0"}}><Links data={shop} /></div>
 

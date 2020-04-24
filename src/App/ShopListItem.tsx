@@ -1,6 +1,7 @@
 import React from "react";
 import Links from './Links'
 import { BsChevronCompactRight } from 'react-icons/bs'
+import { makeDistanceLabelText } from './distance-label'
 
 import './ShopListItem.scss'
 
@@ -14,10 +15,18 @@ const Content = (props: Props) => {
   const clickHandler = () => {
     props.popupHandler(props.index)
   }
+
+  const distanceTipText = makeDistanceLabelText(props.data.distance)
+
   return (
     <>
       <button className="shop-link" onClick={clickHandler}>
-        <h2>{props.data['店名']} <sup>{props.data['ジャンル']}</sup></h2>
+        <h2>
+          {props.data['店名']}
+          {' '}
+          <sup className="category">{props.data['ジャンル']}</sup>
+          {distanceTipText && <sup className="distance">{distanceTipText}</sup> }
+        </h2>
         {props.data['営業時間']?<div>営業時間: {props.data['営業時間']}</div>:''}
         {props.data['テイクアウト営業時間']?<div>テイクアウト営業時間: {props.data['テイクアウト営業時間']}</div>:''}
         {props.data['価格帯']?<div>価格帯: {props.data['価格帯']}</div>:''}
