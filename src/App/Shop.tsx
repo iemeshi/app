@@ -61,6 +61,7 @@ const Content = (props: Props) => {
             <table className="meta">
               <tbody>
                 <tr><th>営業時間</th><td>{shop['営業時間']}</td></tr>
+                <tr><th>テイクアウト営業時間</th><td>{shop['テイクアウト営業時間']}</td></tr>
                 <tr><th>価格帯</th><td>{shop['価格帯']}</td></tr>
                 <tr><th>支払い方法</th><td>{shop['支払い方法']}</td></tr>
               </tbody>
