@@ -10,7 +10,6 @@ import Tabbar from './App/Tabbar'
 
 import csvParser from 'csv-parse'
 import config from './config.json'
-import genUrl from "./App/genUrl";
 import { askGeolocationPermission } from './geolocation'
 import * as turf from "@turf/turf"
 

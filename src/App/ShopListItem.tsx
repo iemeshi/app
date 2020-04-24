@@ -7,13 +7,12 @@ import './ShopListItem.scss'
 
 type Props = {
   data: Iemeshi.ShopData;
-  index: number;
   popupHandler: Function;
 };
 
 const Content = (props: Props) => {
   const clickHandler = () => {
-    props.popupHandler(props.index)
+    props.popupHandler(props.data)
   }
 
   const distanceTipText = makeDistanceLabelText(props.data.distance)

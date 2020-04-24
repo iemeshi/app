@@ -8,16 +8,17 @@ type Props = {
 }
 
 const Content = (props: Props) => {
-
-  const [ index, setIndex ] = React.useState<number| null>(null)
+  const [ shop, setShop  ] = React.useState<Iemeshi.ShopData | undefined>()
   const { data } = props
 
-  const popupHandler = (index: number) => {
-    setIndex(index)
+  const popupHandler = (shop: Iemeshi.ShopData) => {
+    if (shop) {
+      setShop(shop)
+    }
   }
 
   const closeHandler = () => {
-    setIndex(null)
+    setShop(undefined)
   }
 
   return (
@@ -25,14 +26,13 @@ const Content = (props: Props) => {
       {
         data.map((shop) => <div key={shop.index} className="shop">
           <ShopListItem
-            index={shop.index}
             data={shop}
             popupHandler={popupHandler}
           />
         </div>)
       }
-      {index !== null?
-        <Shop shop={props.data[index]} close={closeHandler} />
+      {shop?
+        <Shop shop={shop} close={closeHandler} />
         :
         <></>
       }
