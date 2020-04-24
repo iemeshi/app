@@ -36,9 +36,20 @@
   {
     font-size: 10px;
     font-weight: normal;
-    background-color: #f5b041;
-    color: #ffffff;
     padding: 3px;
     border-radius: 6px;
+    &.category
+    {
+      background-color: #f5b041;
+      color: #ffffff;
+    }
+    &.distance
+    {
+      background-color: #41b0f5;
+      color: #ffffff;
+    }
+    & + sup {
+      margin-left: .5em;
+    }
   }
 }

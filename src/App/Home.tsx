@@ -1,16 +1,8 @@
 import React from "react";
 import Map from "./Map"
 
-type ShopData = {
-  [key: string]: string;
-}
-
-type ShopList = {
-  [key: string]: ShopData
-}
-
 type Props = {
-  data: ShopList;
+  data: Iemeshi.ShopData[];
 }
 
 const Content = (props: Props) => {

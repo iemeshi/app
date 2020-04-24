@@ -5,16 +5,8 @@ import toGeoJson from './toGeoJson'
 import setCluster from './setCluster'
 import Shop from './Shop'
 
-type ShopData = {
-  [key: string]: string;
-}
-
-type ShopList = {
-  [key: string]: ShopData
-}
-
 type Props = {
-  data: ShopList;
+  data: Iemeshi.ShopData[];
 };
 
 const CSS: React.CSSProperties = {
@@ -26,7 +18,7 @@ const CSS: React.CSSProperties = {
 const Content = (props: Props) => {
   const mapNode = React.useRef<HTMLDivElement>(null);
   const [ mapObject, setMapObject ] = React.useState<any>()
-  const [ id, setId ] = React.useState<string>('')
+  const [ index, setIndex ] = React.useState<number | null>(null)
 
   React.useEffect(() => {
     if (!mapObject || !props.data) {
@@ -72,8 +64,8 @@ const Content = (props: Props) => {
     })
 
     mapObject.on('click', 'shop-points', (event: any) => {
-      if (event.features[0].properties._id) {
-        setId(event.features[0].properties._id)
+      if (event.features[0].properties.index) {
+        setIndex(event.features[0].properties.index)
       }
     })
 
@@ -138,7 +130,7 @@ const Content = (props: Props) => {
   }, [mapNode, props.data])
 
   const closeHandler = () => {
-    setId('')
+    setIndex(null)
   }
 
   return (
@@ -150,8 +142,8 @@ const Content = (props: Props) => {
         data-marker="off"
         data-gesture-handling="off"
       ></div>
-      {id?
-        <Shop data={props.data} shopId={id} close={closeHandler} />
+      {index !== null?
+        <Shop shop={props.data[index]} close={closeHandler} />
         :
         <></>
       }
