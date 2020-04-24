@@ -11,14 +11,8 @@ import Tabbar from './App/Tabbar'
 import csvParser from 'csv-parse'
 import config from './config.json'
 import genUrl from "./App/genUrl";
-
-type ShopData = {
-  [key: string]: string;
-}
-
-type ShopList = {
-  [key: string]: ShopData
-}
+import { askGeolocationPermission } from './geolocation'
+import * as turf from "@turf/turf"
 
 const zen2han = (str: string) => {
   return str.replace(/[！-～]/g, function(s: string) {
@@ -27,7 +21,7 @@ const zen2han = (str: string) => {
 }
 
 const App = () => {
-  const [ data, setData ] = React.useState<ShopList>({})
+  const [ shopList, setShopList ] = React.useState<Iemeshi.ShopData[]>([])
 
   React.useEffect(() => {
     fetch(config.data_url)
@@ -48,15 +42,44 @@ const App = () => {
           return properties;
         });
 
-        const shopData = {} as ShopList
+        const nextShopList: Iemeshi.ShopData[] = []
         for (let i = 0; i < features.length; i++) {
-          if (features[i]['緯度'] && features[i]['経度'] && features[i]['店名']) {
-            const url = await genUrl(features[i])
-            shopData[url] = features[i]
+          const feature = features[i] as Iemeshi.ShopData
+          const shop = {
+            index: i,
+            ...feature
           }
+          nextShopList.push(shop)
         }
 
-        setData(shopData)
+        setShopList(nextShopList)
+
+        // Sorting
+        const currentPosition = await askGeolocationPermission()
+        if(currentPosition) {
+          const from = turf.point(currentPosition);
+          const sortingShopList = nextShopList.map((shop) => {
+            const lng = parseFloat(shop['経度'])
+            const lat = parseFloat(shop['緯度'])
+            if(Number.isNaN(lng) || Number.isNaN(lat)) {
+              return shop
+            } else {
+              const to = turf.point([lng, lat])
+              const distance = turf.distance(from, to, {units: 'meters' as 'meters'});
+              return { ...shop, distance }
+            }
+          })
+          sortingShopList.sort((a,b) => {
+            if(typeof a.distance !== 'number') {
+              return -1
+            } else if (typeof b.distance !== 'number') {
+              return 1
+            } else {
+              return a.distance - b.distance
+            }
+          })
+          setShopList(sortingShopList)
+        }
       });
     });
   }, [])
@@ -65,8 +88,8 @@ const App = () => {
     <div className="app">
       <div className="app-body">
         <HashRouter>
-          <Route exact path="/"><Home data={data} /></Route>
-          <Route exact path="/list"><List data={data} /></Route>
+          <Route exact path="/"><Home data={shopList} /></Route>
+          <Route exact path="/list"><List data={shopList} /></Route>
           <Route exact path="/about" component={AboutUs} />
         </HashRouter>
       </div>

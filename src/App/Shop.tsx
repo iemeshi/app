@@ -3,29 +3,14 @@ import Links from './Links'
 import './Shop.scss'
 import { AiOutlineClose } from 'react-icons/ai'
 
-type ShopData = {
-  [key: string]: string;
-}
-
-type ShopList = {
-  [key: string]: ShopData
-}
-
 type Props = {
-  data: ShopList;
-  shopId: string;
+  shop: Iemeshi.ShopData;
   close: Function;
 }
 
 const Content = (props: Props) => {
   const mapNode = React.useRef<HTMLDivElement>(null);
-  const [ shop, setShop ] = React.useState<ShopData>({})
-
-  React.useEffect(() => {
-    if (props.shopId) {
-      setShop(props.data[props.shopId])
-    }
-  }, [props.shopId, props.data])
+  const { shop } = props
 
   const clickHandler = () => {
     props.close()
@@ -42,6 +27,7 @@ const Content = (props: Props) => {
       interactive: false,
     });
   }, [shop, mapNode])
+
 
   return (
     <div className="shop-single">

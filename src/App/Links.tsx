@@ -3,12 +3,8 @@ import { FaPhone, FaTwitter, FaInstagram, FaHome } from 'react-icons/fa';
 
 import './Links.scss'
 
-type ShopData = {
-  [key: string]: string;
-}
-
 type Props = {
-  data: ShopData;
+  data: Iemeshi.ShopData;
 };
 
 const Content = (props: Props) => {

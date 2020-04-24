@@ -4,23 +4,16 @@ import { BsChevronCompactRight } from 'react-icons/bs'
 
 import './ShopListItem.scss'
 
-type ShopData = {
-  [key: string]: string;
-}
-
 type Props = {
-  data: ShopData;
-  index: string;
+  data: Iemeshi.ShopData;
+  index: number;
   popupHandler: Function;
-  distance?: number;
 };
 
 const Content = (props: Props) => {
   const clickHandler = () => {
-    console.log(props.index)
     props.popupHandler(props.index)
   }
-  console.log(props.distance)
   return (
     <>
       <button className="shop-link" onClick={clickHandler}>
