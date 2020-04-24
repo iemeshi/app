@@ -12,6 +12,7 @@ type Props = {
   data: ShopData;
   index: string;
   popupHandler: Function;
+  distance?: number;
 };
 
 const Content = (props: Props) => {
@@ -19,7 +20,7 @@ const Content = (props: Props) => {
     console.log(props.index)
     props.popupHandler(props.index)
   }
-
+  console.log(props.distance)
   return (
     <>
       <button className="shop-link" onClick={clickHandler}>
