@@ -70,10 +70,10 @@ const App = () => {
             }
           })
           sortingShopList.sort((a,b) => {
-            if(typeof a.distance !== 'number') {
-              return -1
-            } else if (typeof b.distance !== 'number') {
+            if(typeof a.distance !== 'number' || Number.isNaN(a.distance)) {
               return 1
+            } else if (typeof b.distance !== 'number' || Number.isNaN(b.distance)) {
+              return -1
             } else {
               return a.distance - b.distance
             }
