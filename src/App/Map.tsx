@@ -69,7 +69,7 @@ const Content = (props: Props) => {
     })
 
     mapObject.on('click', 'shop-points', (event: any) => {
-      if (event.features[0].properties.index) {
+      if (!event.features[0].properties.cluster) {
         setShop(event.features[0].properties)
       }
     })
