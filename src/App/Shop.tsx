@@ -43,8 +43,8 @@ const Content = (props: Props) => {
           <>
             <h2>{shop['店名']}</h2>
             <div>
-              <sup className="category">{shop['ジャンル']}</sup>
-              {distanceTipText && <sup className="distance">{distanceTipText}</sup> }
+              <span className="nowrap"><span className="category">{shop['ジャンル']}</span></span>
+              <span className="nowrap">{distanceTipText && <span className="distance">現在位置から {distanceTipText}</span> }</span>
             </div>
 
             <div style={{margin: "24px 0"}}><Links data={shop} /></div>
