@@ -23,16 +23,18 @@ const App = () => {
   const [ shopList, setShopList ] = React.useState<Iemeshi.ShopData[]>([])
 
   React.useEffect(() => {
-    const url = config.data_url.replace(/^(https:\/\/.+\/).+gid=([0-9]+)/, (match: string, url: string, gid: string) => {
-      return `${url}export?format=csv&gid=${gid}`
-    })
-
-    fetch(url)
+    fetch(config.data_url)
     .then((response) => {
       return response.ok ? response.text() : Promise.reject(response.status);
     })
     .then((data) => {
       csvParser(data, async (error, data) => {
+        if (error) {
+          console.log(error)
+          setShopList([])
+          return
+        }
+
         const [header, ...records] = data;
 
         const features = records.map((record: string) => {
