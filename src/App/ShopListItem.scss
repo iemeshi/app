@@ -23,33 +23,22 @@
 
   h2
   {
-    font-size: 16px;
-  }
-
-  .links
-  {
-    margin-top: 12px;
+    font-size: 1.2rem;
     margin-bottom: 0;
   }
 
-  sup
+  .category,
+  .distance
   {
-    font-size: 10px;
-    font-weight: normal;
-    padding: 3px;
-    border-radius: 6px;
-    &.category
-    {
-      background-color: #f5b041;
-      color: #ffffff;
-    }
-    &.distance
-    {
-      background-color: #41b0f5;
-      color: #ffffff;
-    }
-    & + sup {
-      margin-left: .5em;
-    }
+    border-radius: 4px;
+    background-color: #41b0f5;
+    color: #ffffff;
+    padding: 4px;
+    font-size: 0.8rem;
+  }
+
+  .category
+  {
+    background-color: #f5b041;
   }
 }

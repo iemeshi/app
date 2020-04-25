@@ -23,7 +23,11 @@ const App = () => {
   const [ shopList, setShopList ] = React.useState<Iemeshi.ShopData[]>([])
 
   React.useEffect(() => {
-    fetch(config.data_url)
+    const url = config.data_url.replace(/^(https:\/\/.+\/).+gid=([0-9]+)/, (match: string, url: string, gid: string) => {
+      return `${url}export?format=csv&gid=${gid}`
+    })
+
+    fetch(url)
     .then((response) => {
       return response.ok ? response.text() : Promise.reject(response.status);
     })

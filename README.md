@@ -25,9 +25,9 @@ config.yml を書き換えることでサイト全体の設定を変更できま
 title: 和歌山県串本町
 description: 和歌山県串本町内でテイクアウトできるお店
 data_url: https://example.com/path/to/csv
-
-map:
-  lng: 135.7815
-  lat: 33.4725
-  zoom: 14
 ```
+
+## Google スプレッドシートを CSV でダウンロードするための URL
+
+* https://docs.google.com/spreadsheets/d/1zyZQcaK3sREB59gv34aPAvk6NOktLe4P5gM42XmKmAc/edit#gid=0
+* https://docs.google.com/spreadsheets/d/1zyZQcaK3sREB59gv34aPAvk6NOktLe4P5gM42XmKmAc/export?format=csv&gid=0

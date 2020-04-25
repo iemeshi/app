@@ -17,9 +17,14 @@
     overflow: scroll;
   }
 
+  h2
+  {
+    font-size: 1.4rem;
+  }
+
   sup
   {
-    font-size: 10px;
+    font-size: 0.6rem;
     font-weight: normal;
     padding: 3px;
     border-radius: 6px;
@@ -36,31 +41,6 @@
     }
     & + sup {
       margin-left: .5em;
-    }
-  }
-
-  .meta
-  {
-    font-size: 12px;
-    border-collapse: collapse;
-    width: 100%;
-
-    th, td
-    {
-      text-align: left;
-      padding: 4px;
-      border-bottom: 1px solid #eeeeee;
-    }
-
-    th
-    {
-      white-space: nowrap;
-      vertical-align: top;
-    }
-
-    tr:nth-last-child(even)
-    {
-      background-color: #f5f5f5;
     }
   }
 
@@ -82,7 +62,7 @@
       color: #ffffff;
       height: 44px;
       padding-left: 18px;
-      font-size: 14px;
+      font-size: 1rem;
 
       svg
       {

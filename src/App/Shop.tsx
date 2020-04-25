@@ -3,6 +3,7 @@ import Links from './Links'
 import './Shop.scss'
 import { AiOutlineClose } from 'react-icons/ai'
 import { makeDistanceLabelText } from "./distance-label";
+import ShopMeta from './ShopMeta'
 
 type Props = {
   shop: Iemeshi.ShopData;
@@ -50,14 +51,7 @@ const Content = (props: Props) => {
 
             <p style={{margin: "24px 0"}}>{shop['紹介文']}</p>
 
-            <table className="meta">
-              <tbody>
-                <tr><th>営業時間</th><td>{shop['営業時間']}</td></tr>
-                <tr><th>テイクアウト営業時間</th><td>{shop['テイクアウト営業時間']}</td></tr>
-                <tr><th>価格帯</th><td>{shop['価格帯']}</td></tr>
-                <tr><th>支払い方法</th><td>{shop['支払い方法']}</td></tr>
-              </tbody>
-            </table>
+            <ShopMeta shop={shop} />
 
             <div
               ref={mapNode}
@@ -67,7 +61,7 @@ const Content = (props: Props) => {
               data-navigation-control="off"
             ></div>
 
-            <p><a href={`http://maps.apple.com/?q=${shop['緯度']},${shop['経度']}`}>お店までの道順</a></p>
+            <p><a className="small" href={`http://maps.apple.com/?q=${shop['緯度']},${shop['経度']}`}>お店までの道順</a></p>
           </>
           :
           <></>
