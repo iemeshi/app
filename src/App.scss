@@ -20,10 +20,3 @@ a
   padding-bottom: env(safe-area-inset-bottom);
   z-index: 9999;
 }
-
-@media only screen and (max-width: 960px) {
-  .app-footer
-  {
-    position: fixed;
-  }
-}
