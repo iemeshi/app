@@ -7,7 +7,9 @@
   right: 0;
   margin: auto;
   z-index: 10;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
+  height: 100%;
+  z-index: 9999;
 
   .container
   {
