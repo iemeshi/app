@@ -31,4 +31,9 @@ img
   {
     display: none;
   }
+
+  #root
+  {
+    background: none !important;
+  }
 }
