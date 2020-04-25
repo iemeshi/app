@@ -17,7 +17,7 @@ const Content = () => {
 
       <h2>{config.title}版について</h2>
 
-      <p>串本町版は以下のリポジトリで開発されています。</p>
+      <p>{config.title}版は以下のリポジトリで開発されています。</p>
 
       <p><a href={config.repository}>{config.repository}</a></p>
 
