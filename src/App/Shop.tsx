@@ -26,6 +26,7 @@ const Content = (props: Props) => {
     new window.geolonia.Map({
       container: mapNode.current,
       interactive: false,
+      zoom: 14,
     });
   }, [shop, mapNode])
 
@@ -60,10 +61,9 @@ const Content = (props: Props) => {
 
             <div
               ref={mapNode}
-              style={{width: '100%', height: '200px', marginTop: "24px"}}
+              style={{width: '100%', height: '150px', marginTop: "24px"}}
               data-lat={shop['緯度']}
               data-lng={shop['経度']}
-              data-zoom="14"
               data-navigation-control="off"
             ></div>
 

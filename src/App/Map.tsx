@@ -18,10 +18,15 @@ const CSS: React.CSSProperties = {
 const Content = (props: Props) => {
   const mapNode = React.useRef<HTMLDivElement>(null);
   const [ mapObject, setMapObject ] = React.useState<any>()
-  const [ index, setIndex ] = React.useState<number | null>(null)
+  const [ shop, setShop ] = React.useState<Iemeshi.ShopData | undefined>(undefined)
 
   React.useEffect(() => {
     if (!mapObject || !props.data) {
+      return
+    }
+
+    // nothing to do if shops exists.
+    if (mapObject.getSource('shops')) {
       return
     }
 
@@ -64,8 +69,8 @@ const Content = (props: Props) => {
     })
 
     mapObject.on('click', 'shop-points', (event: any) => {
-      if (event.features[0].properties.index) {
-        setIndex(event.features[0].properties.index)
+      if (!event.features[0].properties.cluster) {
+        setShop(event.features[0].properties)
       }
     })
 
@@ -96,7 +101,8 @@ const Content = (props: Props) => {
   }, [mapObject, props.data])
 
   React.useEffect(() => {
-    if (!mapNode.current) {
+    // Only once reder the map.
+    if (!mapNode.current || mapObject) {
       return
     }
 
@@ -127,10 +133,10 @@ const Content = (props: Props) => {
       map.resize()
     })
 
-  }, [mapNode, props.data])
+  }, [mapNode, mapObject, props.data])
 
   const closeHandler = () => {
-    setIndex(null)
+    setShop(undefined)
   }
 
   return (
@@ -142,8 +148,8 @@ const Content = (props: Props) => {
         data-marker="off"
         data-gesture-handling="off"
       ></div>
-      {index !== null?
-        <Shop shop={props.data[index]} close={closeHandler} />
+      {shop?
+        <Shop shop={shop} close={closeHandler} />
         :
         <></>
       }
