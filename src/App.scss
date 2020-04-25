@@ -6,7 +6,7 @@ a
 
 .app-body
 {
-  height: calc(100% - 50px - env(safe-area-inset-bottom));
+  height: calc(100vh - 50px - env(safe-area-inset-bottom));
 }
 
 .app-footer

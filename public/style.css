@@ -27,6 +27,18 @@ img
   max-width: 100%;
 }
 
+body
+{
+  position: fixed;
+  overflow: hidden;
+}
+
+#root
+{
+  background-image: url('./background.jpg');
+  background-size: cover;
+}
+
 @media only screen and (max-width: 960px) {
   .github-fork-ribbon
   {
