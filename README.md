@@ -89,7 +89,7 @@ https://github.com/iemeshi/sample-csv
 
 GitHub Pages を使用するには、GitHub Actions や Circle CI でビルドを行う必要がありますので、Netlify が簡単だと思います。
 
-### ドメインについて
+#### ドメインについて
 
 このアプリでは [Geolonia](https://geolonia.com/) の地図を使用していますが、API キーによる制限により、以下のドメイン名でのみ利用可能です。
 
