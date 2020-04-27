@@ -40,7 +40,7 @@ const Content = (props: Props) => {
       data: geojson,
       cluster: true,
       clusterMaxZoom: 14,
-      clusterRadius: 50,
+      clusterRadius: 25,
     })
 
     mapObject.addLayer({
