@@ -121,18 +121,25 @@ const Content = (props: Props) => {
       fitBoundsOptions: {padding: 100}
     });
 
-    map.on('load', () => {
+    const onMapLoad = () => {
       map.setLayoutProperty('building', 'visibility', 'none')
       map.setLayoutProperty('poi', 'visibility', 'none')
       map.setLayoutProperty('poi-primary', 'visibility', 'none')
-
       setMapObject(map)
-    })
-
-    window.addEventListener('orientationchange', () => {
+    }
+    const orienteationchangeHandler = () => {
       map.resize()
-    })
+    }
 
+    // attach
+    map.on('load', onMapLoad)
+    window.addEventListener('orientationchange', orienteationchangeHandler)
+
+    return () => {
+      // detach to prevent memory leak
+      window.removeEventListener('orientationchange', orienteationchangeHandler)
+      map.off('load', onMapLoad)
+    }
   }, [mapNode, mapObject, props.data])
 
   const closeHandler = () => {
