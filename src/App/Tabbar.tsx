@@ -11,7 +11,7 @@ const Content = () => {
       <ul>
         <li><a href="/#"><div className="icon"><FaHome /></div><div className="text">ホーム</div></a></li>
         <li><a href="/#list"><div className="icon"><FaList /></div><div className="text">一覧</div></a></li>
-        <li><a href="https://iemeshi.jp/" target="_blank"><div className="icon"><GiJapan /></div><div className="text">全国</div></a></li>
+        <li><a href="https://iemeshi.jp/" target="_blank" rel="noopener noreferrer"><div className="icon"><GiJapan /></div><div className="text">全国</div></a></li>
         <li><a href="/#about"><div className="icon"><AiOutlineAppstore /></div><div className="text">イエメシについて</div></a></li>
       </ul>
     </div>
