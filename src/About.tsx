@@ -1,6 +1,6 @@
 import React from "react";
 import './About.scss'
-import bento from './bento.svg'
+import logo from './logo.svg'
 import QRCode from 'qrcode.react'
 import Share from './App/Share'
 import config from './config.json'
@@ -11,7 +11,7 @@ const Content = () => {
   return (
     <div className="about">
       <div className="branding">
-        <div className="image"><img src={bento} alt=""/></div>
+        <div className="image"><img src={logo} alt=""/></div>
         <div className="logo">イエメシ</div>
       </div>
 

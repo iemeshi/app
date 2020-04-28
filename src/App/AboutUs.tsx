@@ -1,5 +1,5 @@
 import React from "react";
-import bento from '../bento.svg'
+import logo from '../logo.svg'
 import './AboutUs.scss'
 import config from '../config.json'
 
@@ -7,7 +7,7 @@ const Content = () => {
   return (
     <div className="about-us">
       <div className="branding">
-        <div className="image"><img src={bento} alt=""/></div>
+        <div className="image"><img src={logo} alt=""/></div>
         <div className="logo">イエメシ</div>
       </div>
 
