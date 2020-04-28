@@ -54,7 +54,6 @@ const Content = (props: Props) => {
         }
       })
     return () => {
-      console.log('unmount')
       isMounted = false
     }
   }, [props.data])
