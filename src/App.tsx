@@ -9,9 +9,8 @@ import AboutUs from './App/AboutUs'
 import Tabbar from './App/Tabbar'
 
 import csvParser from 'csv-parse'
+// You can see config.json after running `npm start` or `npm run build`
 import config from './config.json'
-import { askGeolocationPermission } from './geolocation'
-import * as turf from "@turf/turf"
 
 const zen2han = (str: string) => {
   return str.replace(/[！-～]/g, function(s: string) {
@@ -56,35 +55,7 @@ const App = () => {
           }
           nextShopList.push(shop)
         }
-
         setShopList(nextShopList)
-
-        // Sorting
-        const currentPosition = await askGeolocationPermission()
-        if(currentPosition) {
-          const from = turf.point(currentPosition);
-          const sortingShopList = nextShopList.map((shop) => {
-            const lng = parseFloat(shop['経度'])
-            const lat = parseFloat(shop['緯度'])
-            if(Number.isNaN(lng) || Number.isNaN(lat)) {
-              return shop
-            } else {
-              const to = turf.point([lng, lat])
-              const distance = turf.distance(from, to, {units: 'meters' as 'meters'});
-              return { ...shop, distance }
-            }
-          })
-          sortingShopList.sort((a,b) => {
-            if(typeof a.distance !== 'number' || Number.isNaN(a.distance)) {
-              return 1
-            } else if (typeof b.distance !== 'number' || Number.isNaN(b.distance)) {
-              return -1
-            } else {
-              return a.distance - b.distance
-            }
-          })
-          setShopList(sortingShopList)
-        }
       });
     });
   }, [])
