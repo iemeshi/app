@@ -6,6 +6,13 @@
   box-sizing: border-box;
   padding: 24px;
 
+  .container
+  {
+    margin: 0;
+    padding: 0;
+    padding-bottom: 50px;
+  }
+
   p
   {
     font-size: 1rem;
@@ -16,5 +23,34 @@
   {
     font-size: 1.4rem;
     margin-bottom: 1rem;
+  }
+
+  .goto-form
+  {
+    button
+    {
+      position: absolute;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      -webkit-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+      z-index: 99999;
+      background-color: #007bff;
+      border: none;
+      padding: 8px;
+      border-radius: 100%;
+      border: 2px solid transparent;
+      display: block;
+      box-sizing: border-box;
+      cursor: pointer;
+
+      svg
+      {
+        display: block;
+        width: 24px;
+        height: 24px;
+      }
+    }
   }
 }
