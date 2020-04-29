@@ -6,7 +6,9 @@ import { FaPlus } from 'react-icons/fa';
 
 const Content = () => {
   const clickHandler = () => {
-    window.location.href = config.form
+    if (config.form_url) {
+      window.location.href = config.form_url
+    }
   }
 
   return (
@@ -24,10 +26,10 @@ const Content = () => {
         <p>{config.title}版は以下のリポジトリで開発されています。</p>
         <p><a href={config.repository}>{config.repository}</a></p>
 
-        {config.form?
+        {config.form_url?
           <>
             <p>データの追加や修正をご希望の方は以下のフォームをご利用ください。</p>
-            <p><a href={config.form}>データの登録/更新申請フォーム</a></p>
+            <p><a href={config.form_url}>データの登録/更新申請フォーム</a></p>
           </>
           :
           <></>
@@ -37,7 +39,7 @@ const Content = () => {
         <p><a href="https://geolonia.com/contact/">イエメシに関するお問い合わせはこちらからどうぞ。</a></p>
         <p>掲載店舗に関するお問い合わせにつきましては、ご対応いたしかねますのであらかじめご了承ください。</p>
 
-        {config.form?
+        {config.form_url?
           <>
             <div className="goto-form"><button><FaPlus color="#FFFFFF" onClick={clickHandler} /></button></div>
           </>
