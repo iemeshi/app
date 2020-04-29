@@ -30,7 +30,7 @@
     button
     {
       position: absolute;
-      bottom: 32px;
+      bottom: calc(32px + env(safe-area-inset-bottom));
       left: 50%;
       transform: translateX(-50%);
       -webkit-transform: translateX(-50%);
