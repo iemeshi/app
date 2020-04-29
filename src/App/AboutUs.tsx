@@ -21,7 +21,14 @@ const Content = () => {
 
       <p><a href={config.repository}>{config.repository}</a></p>
 
-      <p>データの追加や修正等を希望する場合は、上のリポジトリを御覧ください。</p>
+      {config.form?
+        <>
+          <p>データの追加や修正をご希望の方は以下のフォームをご利用ください。</p>
+          <p><a href={config.form}>データの登録/更新申請フォーム</a></p>
+        </>
+        :
+        <></>
+      }
 
       <h2>イエメシに関するお問い合わせ</h2>
 
