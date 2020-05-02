@@ -23,9 +23,9 @@
     "typescript": "~3.7.2"
   },
   "scripts": {
-    "generate": "$(node bin/config.js)",
-    "start": "$(node bin/config.js) && npm run generate && react-scripts start",
-    "build": "$(node bin/config.js) && npm run generate && react-scripts build",
+    "generate": "(node bin/config.js)",
+    "start": "(node bin/config.js) && npm run generate && react-scripts start",
+    "build": "(node bin/config.js) && npm run generate && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
