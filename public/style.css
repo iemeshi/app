@@ -17,6 +17,7 @@ html, body, #root
 #root > .loader
 {
   width: 192px;
+  color: #fff;
   font-family: "Nico Moji";
   font-size: 48px;
   text-align: center;
