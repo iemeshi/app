@@ -12,10 +12,15 @@ type Props = {
 
 const Content = (props: Props) => {
   const mapNode = React.useRef<HTMLDivElement>(null);
+  const [map, setMap] = React.useState<any>(null)
   const { shop } = props
 
   const clickHandler = () => {
     props.close()
+    if(mapNode.current) {
+      mapNode.current.remove()
+      map.remove()
+    }
   }
 
   React.useEffect(() => {
@@ -24,11 +29,12 @@ const Content = (props: Props) => {
     }
 
     // @ts-ignore
-    new window.geolonia.Map({
+    const nextMap = new window.geolonia.Map({
       container: mapNode.current,
       interactive: false,
       zoom: 14,
     });
+    setMap(nextMap)
   }, [shop, mapNode])
 
   const distanceTipText = makeDistanceLabelText(shop.distance)
