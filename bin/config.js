@@ -44,5 +44,5 @@ const envText =
 // 全ての設定は src/config.json として出力する
 fs.writeFileSync(distConfigFilePath, JSON.stringify(config, null, 2));
 
-fs.writeFileSync(path.join(path.basename(__dirname) , '.env'), envText)
+fs.writeFileSync(path.join(__dirname , '/../.env'), envText)
 process.exit(0);
