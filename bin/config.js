@@ -4,9 +4,10 @@
 
 const fs = require("fs");
 const YAML = require("yaml");
+const path = require("path")
 
-const srcConfigFilePath = process.cwd() + "/config.yml";
-const distConfigFilePath = process.cwd() + "/src/config.json";
+const srcConfigFilePath = path.join(process.cwd(), "/config.yml");
+const distConfigFilePath = path.join(process.cwd(), "/src/config.json");
 
 let yamlText;
 try {
@@ -37,11 +38,11 @@ const envText =
   Object.keys(config)
     // オブジェクト等は環境変数として出力しない
     .filter((key) => typeof config[key] === "string" || typeof config[key] === "number")
-    .map((key) => `export REACT_APP_${key.toUpperCase()}=${config[key]}`)
+    .map((key) => `export REACT_APP_${key.toUpperCase()}="${config[key]}"`)
     .join("\n") + "\n";
 
 // 全ての設定は src/config.json として出力する
 fs.writeFileSync(distConfigFilePath, JSON.stringify(config, null, 2));
 
-process.stdout.write(envText);
+fs.writeFileSync(path.join(process.cwd() , '.env'), envText)
 process.exit(0);
