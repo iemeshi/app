@@ -1,5 +1,10 @@
-title: 和歌山県串本町
-description: 和歌山県串本町内でテイクアウトできるお店
-data_url: https://docs.google.com/spreadsheets/d/1zyZQcaK3sREB59gv34aPAvk6NOktLe4P5gM42XmKmAc/export?format=csv&gid=0
-repository: https://github.com/iemeshi/app/
-form_url: https://docs.google.com/forms/d/e/1FAIpQLSdjDvfWD5pIuxYiIgVBBwmsfd8-6sgActbeMOm2450dRfZroQ/viewform
+title:
+  高知県高岡郡津野町
+description:
+  津野町内でテイクアウトできるお店
+data_url:
+  https://docs.google.com/spreadsheets/d/1Z8EprD-WTibCOP5GA1P-AOM0co5Km7i_GSuAKTpZ87I/export?format=csv&gid=0
+repository:
+  https://github.com/mimosafa/tsuno.iemeshi/
+form_url:
+  https://docs.google.com/forms/d/e/1FAIpQLSdjDvfWD5pIuxYiIgVBBwmsfd8-6sgActbeMOm2450dRfZroQ/viewform
