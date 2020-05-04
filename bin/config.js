@@ -38,7 +38,7 @@ const envText =
   Object.keys(config)
     // オブジェクト等は環境変数として出力しない
     .filter((key) => typeof config[key] === "string" || typeof config[key] === "number")
-    .map((key) => `export REACT_APP_${key.toUpperCase()}="${config[key]}"`)
+    .map((key) => `REACT_APP_${key.toUpperCase()}="${config[key]}"`)
     .join("\n") + "\n";
 
 // 全ての設定は src/config.json として出力する
