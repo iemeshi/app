@@ -49,8 +49,14 @@ const App = () => {
         const nextShopList: Iemeshi.ShopData[] = []
         for (let i = 0; i < features.length; i++) {
           const feature = features[i] as Iemeshi.ShopData
-          if (!feature['経度'] || !feature['緯度'] || !feature['店名']) {
+          if (!feature['緯度'] || !feature['経度'] || !feature['店名']) {
             continue;
+          }
+          if (!feature['緯度'].match(/^[0-9]+(\.[0-9]+)?$/)) {
+            continue
+          }
+          if (!feature['経度'].match(/^[0-9]+(\.[0-9]+)?$/)) {
+            continue
           }
           const shop = {
             index: i,
