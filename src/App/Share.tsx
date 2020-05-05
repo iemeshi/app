@@ -6,7 +6,7 @@ import config from '../config.json'
 import './Share.scss'
 
 const Content = () => {
-  const url = window.location.href.replace(/#.+$/, '')
+  const url = window.location.href.replace(/\?.+$/, '').replace(/#.+$/, '')
 
   return (
     <div className="share">

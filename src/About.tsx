@@ -6,7 +6,7 @@ import Share from './App/Share'
 import config from './config.json'
 
 const Content = () => {
-  const url = window.location.href.replace(/#.+$/, '')
+  const url = window.location.href.replace(/\?.+$/, '').replace(/#.+$/, '')
 
   return (
     <div className="about">
