@@ -6,10 +6,12 @@ a
 
 .app-body
 {
-  height: calc(100% - 50px);
-// NOTE: Edge cannot interpret calc(env())
-@if env(safe-area-inset-bottom) {
-    height: calc(100% - 50px - env(safe-area-inset-bottom));
+  height: calc(100% - 50px - env(safe-area-inset-bottom));
+}
+// Hack for Edge to eliminage calc(env())
+@supports (-ms-ime-align: auto) {
+  .app-body {
+    height: calc(100% - 50px);
   }
 }
 
