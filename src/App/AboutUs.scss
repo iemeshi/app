@@ -54,3 +54,10 @@
     }
   }
 }
+
+// Hack for Edge to eliminage calc(env())
+@supports (-ms-ime-align: auto) {
+  .goto-form button {
+    bottom: 32px;
+  }
+}

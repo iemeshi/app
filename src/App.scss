@@ -8,6 +8,12 @@ a
 {
   height: calc(100% - 50px - env(safe-area-inset-bottom));
 }
+// Hack for Edge to eliminage calc(env())
+@supports (-ms-ime-align: auto) {
+  .app-body {
+    height: calc(100% - 50px);
+  }
+}
 
 .app-footer
 {
