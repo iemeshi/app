@@ -127,13 +127,20 @@ const Content = (props: Props) => {
       map.setLayoutProperty('poi-primary', 'visibility', 'none')
       setMapObject(map)
     }
+
     const orienteationchangeHandler = () => {
       map.resize()
     }
 
     // attach
     map.on('load', onMapLoad)
-    window.addEventListener('orientationchange', orienteationchangeHandler)
+
+    const { screen } = window
+    if (screen && screen.orientation) {
+      window.screen.orientation.addEventListener('change', orienteationchangeHandler)
+    } else {
+      window.addEventListener('orientationchange', orienteationchangeHandler)
+    }
 
     return () => {
       // detach to prevent memory leak
