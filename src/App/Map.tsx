@@ -136,11 +136,7 @@ const Content = (props: Props) => {
     map.on('load', onMapLoad)
 
     const { screen } = window
-    if (screen && screen.orientation) {
-      window.screen.orientation.addEventListener('change', orienteationchangeHandler)
-    } else {
-      window.addEventListener('orientationchange', orienteationchangeHandler)
-    }
+    window.addEventListener('orientationchange', orienteationchangeHandler)
 
     return () => {
       // detach to prevent memory leak
