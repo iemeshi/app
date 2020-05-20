@@ -11,6 +11,7 @@ const Content = (props: Props) => {
   return (
     <table className="shop-meta-table">
       <tbody>
+        <tr><th>定休日</th><td>{shop['定休日']}</td></tr>
         <tr><th>営業時間</th><td>{shop['営業時間']}</td></tr>
         <tr><th>テイクアウト営業時間</th><td>{shop['テイクアウト営業時間']}</td></tr>
         <tr><th>価格帯</th><td>{shop['価格帯']}</td></tr>

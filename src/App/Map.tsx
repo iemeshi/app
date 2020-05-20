@@ -135,7 +135,6 @@ const Content = (props: Props) => {
     // attach
     map.on('load', onMapLoad)
 
-    const { screen } = window
     window.addEventListener('orientationchange', orienteationchangeHandler)
 
     return () => {

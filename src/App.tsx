@@ -62,6 +62,8 @@ const App = () => {
             index: i,
             ...feature
           }
+
+          console.log(shop)
           nextShopList.push(shop)
         }
         setShopList(nextShopList)

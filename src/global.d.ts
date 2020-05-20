@@ -7,6 +7,7 @@ declare namespace Iemeshi {
     '店名': string;
     'ジャンル': string;
     '紹介文': string;
+    '定休日': string;
     '営業時間': string;
     'テイクアウト営業時間': string;
     '価格帯': string;
