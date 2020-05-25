@@ -111,7 +111,7 @@ const Content = (props: Props) => {
     // @ts-ignore
     const { geolonia } = window;
 
-    const style = 'geolonia/basic'
+    const style = 'https://raw.githubusercontent.com/geolonia/basic-gsij/master/style.json'
 
     const geojson = toGeoJson(props.data)
     const bounds = geojsonExtent(geojson)
@@ -120,7 +120,7 @@ const Content = (props: Props) => {
       container: mapNode.current,
       style: style,
       bounds: bounds,
-      fitBoundsOptions: {padding: 100}
+      fitBoundsOptions: {padding: 50}
     });
 
     const onMapLoad = () => {
