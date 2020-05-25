@@ -124,7 +124,6 @@ const Content = (props: Props) => {
     });
 
     const onMapLoad = () => {
-      map.setLayoutProperty('building', 'visibility', 'none')
       map.setLayoutProperty('poi', 'visibility', 'none')
       map.setLayoutProperty('poi-primary', 'visibility', 'none')
       setMapObject(map)
