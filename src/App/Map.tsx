@@ -111,7 +111,7 @@ const Content = (props: Props) => {
     // @ts-ignore
     const { geolonia } = window;
 
-    const style = 'https://raw.githubusercontent.com/geolonia/basic-gsij/master/style.json'
+    const style = 'geolonia/gsi'
 
     const geojson = toGeoJson(props.data)
     const bounds = geojsonExtent(geojson)
