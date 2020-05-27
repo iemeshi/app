@@ -60,6 +60,31 @@ const Content = (props: Props) => {
       },
     })
 
+    mapObject.addLayer({
+      id: 'shop-symbol',
+      type: 'symbol',
+      source: 'shops',
+      filter: ['all',
+        ['==', '$type', 'Point'],
+      ],
+      paint: {
+        'text-color': textColor,
+        'text-halo-color': textHaloColor,
+        'text-halo-width': 2,
+      },
+      layout: {
+        'text-field': "{店名}",
+        'text-font': ['Noto Sans Regular'],
+        'text-variable-anchor': ['top', 'bottom', 'left', 'right'],
+        'text-radial-offset': 0.5,
+        'text-justify': 'auto',
+        'text-size': 12,
+        'text-anchor': 'top',
+        'text-max-width': 12,
+        'text-allow-overlap': false,
+      },
+    })
+
     mapObject.on('mouseenter', 'shop-points', () => {
       mapObject.getCanvas().style.cursor = 'pointer'
     })
@@ -86,31 +111,6 @@ const Content = (props: Props) => {
       if (!event.features[0].properties.cluster) {
         setShop(event.features[0].properties)
       }
-    })
-
-    mapObject.addLayer({
-      id: 'shop-symbol',
-      type: 'symbol',
-      source: 'shops',
-      filter: ['all',
-        ['==', '$type', 'Point'],
-      ],
-      paint: {
-        'text-color': textColor,
-        'text-halo-color': textHaloColor,
-        'text-halo-width': 2,
-      },
-      layout: {
-        'text-field': "{店名}",
-        'text-font': ['Noto Sans Regular'],
-        'text-variable-anchor': ['top', 'bottom', 'left', 'right'],
-        'text-radial-offset': 0.5,
-        'text-justify': 'auto',
-        'text-size': 12,
-        'text-anchor': 'top',
-        'text-max-width': 12,
-        'text-allow-overlap': false,
-      },
     })
 
     setCluster(mapObject)
