@@ -68,7 +68,21 @@ const Content = (props: Props) => {
       mapObject.getCanvas().style.cursor = ''
     })
 
+    mapObject.on('mouseenter', 'shop-symbol', () => {
+      mapObject.getCanvas().style.cursor = 'pointer'
+    })
+
+    mapObject.on('mouseleave', 'shop-symbol', () => {
+      mapObject.getCanvas().style.cursor = ''
+    })
+
     mapObject.on('click', 'shop-points', (event: any) => {
+      if (!event.features[0].properties.cluster) {
+        setShop(event.features[0].properties)
+      }
+    })
+
+    mapObject.on('click', 'shop-symbol', (event: any) => {
       if (!event.features[0].properties.cluster) {
         setShop(event.features[0].properties)
       }

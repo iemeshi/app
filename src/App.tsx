@@ -63,7 +63,6 @@ const App = () => {
             ...feature
           }
 
-          console.log(shop)
           nextShopList.push(shop)
         }
         setShopList(nextShopList)
