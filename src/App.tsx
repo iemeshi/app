@@ -22,7 +22,7 @@ const App = () => {
   const [ shopList, setShopList ] = React.useState<Iemeshi.ShopData[]>([])
 
   React.useEffect(() => {
-    fetch(config.data_url)
+    fetch(`https://9sklrm30w6.execute-api.ap-northeast-1.amazonaws.com/v1/proxy?target=${encodeURIComponent(config.data_url)}`)
     .then((response) => {
       return response.ok ? response.text() : Promise.reject(response.status);
     })
