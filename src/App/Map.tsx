@@ -118,7 +118,7 @@ const Content = (props: Props) => {
 
   React.useEffect(() => {
     // Only once reder the map.
-    if (!mapNode.current || mapObject) {
+    if (!mapNode.current || mapObject || props.data.length === 0) {
       return
     }
 
