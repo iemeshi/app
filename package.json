@@ -46,7 +46,7 @@
   "devDependencies": {
     "@types/qrcode.react": "^1.0.0",
     "@types/react-router-dom": "^5.1.4",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "csv-parse": "^4.8.8",
     "node-sass": "^4.13.1",
     "yaml": "^1.9.1"
