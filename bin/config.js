@@ -39,7 +39,7 @@ const envText =
     // オブジェクト等は環境変数として出力しない
     .filter((key) => typeof config[key] === "string" || typeof config[key] === "number")
     .map((key) => `REACT_APP_${key.toUpperCase()}="${config[key]}"`)
-    .join("\n") + "\n";
+    .join("\n") + "\nSKIP_PREFLIGHT_CHECK=true\n";
 
 // 全ての設定は src/config.json として出力する
 fs.writeFileSync(distConfigFilePath, JSON.stringify(config, null, 2));
