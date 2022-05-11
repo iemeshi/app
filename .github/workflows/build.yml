@@ -25,6 +25,8 @@ jobs:
       with:
         node-version: 16.x
 
+    - run: npm install
+
     - name: Download data
       run: node bin/download.js ${GOOGLE_SHEET_API_KEY}
 
@@ -38,7 +40,6 @@ jobs:
           git push -f origin master; \
         fi
 
-    - run: npm install
     - run: npm run build
 
     - name: Deploy
