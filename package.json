@@ -32,7 +32,7 @@
   "scripts": {
     "start": "node bin/config.js && react-scripts start",
     "build": "node bin/config.js && react-scripts build",
-    "build:assets": "pwa-asset-generator public/logo.svg ./public/ --index ./public/index.html --manifest ./public/manifest.json --favicon true",
+    "build:assets": "node bin/download_logo.js && pwa-asset-generator public/logo.svg ./public/ --index ./public/index.html --manifest ./public/manifest.json --favicon true",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

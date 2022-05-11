@@ -34,10 +34,10 @@
    process.exit(3);
  }
 
-if (config.background_image && config.background_image.match(/^https:\/\/www.dropbox.com\/s\//)) {
+if (config.background_image_url && config.background_image_url.match(/^https:\/\/www.dropbox.com\/s\//)) {
 
   // Dropbox の共有 URL から　直 URL に変換
-  config.background_image = config.background_image.replace(/dl=\d+$/, 'raw=1')
+  config.background_image_url = config.background_image_url.replace(/dl=\d+$/, 'raw=1')
 
 }
 
