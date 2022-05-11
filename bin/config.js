@@ -83,7 +83,7 @@ const fetchDataSetEnv = async () => {
       process.stderr.write(
         `スプレッドシートのダウンロードに失敗しました。URLとAPIキー、閲覧権限が正しく設定されている事を確認して下さい。\n`
       );
-      process.exit(6);
+      process.exit(2);
     }
   }
 
