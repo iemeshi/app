@@ -42,7 +42,7 @@ const Content = (props: Props) => {
 
         <div style={{ margin: "10px 10px 10px 0" }}>
 
-          { <img src={image ? image : `${process.env.PUBLIC_URL}/no_image.jpg`} alt={props.data['スポット名']} />}
+          { image && <img src={image} alt={props.data['スポット名']} />}
 
           <p className="excerpt">{`${props.data['紹介文'].substring( 0, 100 )} ...`}</p>
 

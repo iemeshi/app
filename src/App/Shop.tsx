@@ -90,13 +90,6 @@ const Content = (props: Props) => {
 
             <p><a className="small" href={`http://maps.apple.com/?q=${shop['緯度']},${shop['経度']}`}>おすすめスポットまでの道順</a></p>
 
-            <div className="meta">
-
-              <h3>URL</h3>
-              <a className="place-url" href={shop['URL']} target="_blank" rel="noopener noreferrer">{shop['URL']}</a>
-
-            </div>
-
           </>
           :
           <></>
