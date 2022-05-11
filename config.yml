@@ -1,5 +1,7 @@
 title: Geolonia PWA
 description: Geolonia PWA は、GitHub と Google Sheets を使って、地図アプリを作れる PWA テンプレートです。
 data_url: https://docs.google.com/spreadsheets/d/1_m8s4P5tdSeam3nzC5ruSfuvtSejQKEX1FiBeOWJN3E/edit?usp=sharing
-repository: https://github.com/geoloniamaps/pwa/
 form_url: https://docs.google.com/forms/d/e/1FAIpQLSeAOimw1o4r85sQ0DzU4ohYjhRkAsG8P13GMWObLjLLkGRhtw/viewform
+repository: https://github.com/geoloniamaps/pwa/
+primary_color: '#d2691e'
+background_image: 'https://www.dropbox.com/s/l0zmsop3kwzwwt2/background.jpg?dl=0'

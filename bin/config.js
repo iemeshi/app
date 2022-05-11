@@ -34,12 +34,20 @@
    process.exit(3);
  }
 
+if (config.background_image && config.background_image.match(/^https:\/\/www.dropbox.com\/s\//)) {
+
+  // Dropbox の共有 URL から　直 URL に変換
+  config.background_image = config.background_image.replace(/dl=\d+$/, 'raw=1')
+
+}
+
  const envText =
    Object.keys(config)
      // オブジェクト等は環境変数として出力しない
      .filter((key) => typeof config[key] === "string" || typeof config[key] === "number")
      .map((key) => `REACT_APP_${key.toUpperCase()}="${config[key]}"`)
      .join("\n") + "\nSKIP_PREFLIGHT_CHECK=true\n";
+
 
  // 全ての設定は src/config.json として出力する
  fs.writeFileSync(distConfigFilePath, JSON.stringify(config, null, 2));
