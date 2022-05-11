@@ -9,7 +9,6 @@ const fetch = require("node-fetch")
 const GOOGLE_SHEET_URL = process.argv[2]
 const GOOGLE_SHEET_API_KEY = process.argv[3]
 
-
 const zen2han = (str) => {
   return str.replace(/[！-～]/g, function (s) {
     return String.fromCharCode(s.charCodeAt(0) - 0xFEE0);
