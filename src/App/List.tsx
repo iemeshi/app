@@ -3,7 +3,6 @@ import ShopListItem from './ShopListItem'
 import Shop from './Shop'
 import './List.scss'
 import { useSearchParams } from "react-router-dom";
-import ReactStars from 'react-stars'
 import InfiniteScroll from 'react-infinite-scroll-component';
 
 type Props = {
@@ -20,17 +19,6 @@ const Content = (props: Props) => {
 
   const [searchParams] = useSearchParams();
   const queryCategory = searchParams.get('category')
-  const queryRate = searchParams.get('rate')
-  const queryAuthor = searchParams.get('author')
-  let queryAuthorName = ''
-  if (queryAuthor) {
-    const postByAuthor = data.find(item => item['学籍番号'] === queryAuthor)
-
-    if (postByAuthor) {
-      queryAuthorName = postByAuthor['作成者または紹介者']
-    }
-  }
-
 
   React.useEffect(() => {
 
@@ -39,18 +27,6 @@ const Content = (props: Props) => {
     if (queryCategory) {
       data = props.data.filter((shop) => {
         return shop['カテゴリ'] === queryCategory
-      })
-    }
-
-    if (queryRate) {
-      data = props.data.filter((shop) => {
-        return shop['推しレベル'] === queryRate
-      })
-    }
-
-    if (queryAuthor) {
-      data = props.data.filter((shop) => {
-        return shop['学籍番号'] === queryAuthor
       })
     }
 
@@ -64,7 +40,7 @@ const Content = (props: Props) => {
     return () => {
       isMounted = false
     }
-  }, [props.data, queryCategory, queryRate, queryAuthor, page])
+  }, [props.data, queryCategory, page])
 
 
   const popupHandler = (shop: Iemeshi.ShopData) => {
@@ -102,17 +78,6 @@ const Content = (props: Props) => {
   return (
     <div id="shop-list" className="shop-list">
       {queryCategory && <div className="shop-list-category">{`カテゴリ：「${queryCategory}」`}</div>}
-      {queryRate &&
-        <div className="shop-list-category">
-          {`推しレベル：`}
-          <ReactStars
-            count={5}
-            value={parseInt(queryRate)}
-            edit={false}
-            size={18}
-          />
-        </div>}
-      {queryAuthor && <div className="shop-list-category">{`作成者または紹介者：「${queryAuthorName}」`}</div>}
 
       <InfiniteScroll
         dataLength={list.length}

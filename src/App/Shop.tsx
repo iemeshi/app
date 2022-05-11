@@ -3,7 +3,6 @@ import Links from './Links'
 import './Shop.scss'
 import { AiOutlineClose } from 'react-icons/ai'
 import { makeDistanceLabelText } from "./distance-label";
-import ReactStars from 'react-stars'
 import { Link } from "react-router-dom";
 
 type Props = {
@@ -34,14 +33,13 @@ const Content = (props: Props) => {
       container: mapNode.current,
       interactive: false,
       zoom: 14,
-      style: `${process.env.PUBLIC_URL}/styles/dhushine.json`,
+      style: `geolonia/gsi`,
     });
     setMap(nextMap)
   }, [shop, mapNode])
 
   const distanceTipText = makeDistanceLabelText(shop.distance)
   const category = shop['カテゴリ']
-  const rate = parseInt(shop['推しレベル'])
   const content = shop['紹介文']
 
   const toBreakLine = (text: string) => {
@@ -78,6 +76,10 @@ const Content = (props: Props) => {
 
             <div style={{margin: "24px 0"}}><Links data={shop} /></div>
 
+            { shop['画像'] && <img src={shop['画像']} alt={shop['スポット名']} style={{width: "100%"}} />}
+
+            <p style={{margin: "24px 0"}}>{toBreakLine(content)}</p>
+
             <div
               ref={mapNode}
               style={{width: '100%', height: '200px', marginTop: "24px"}}
@@ -86,38 +88,15 @@ const Content = (props: Props) => {
               data-navigation-control="off"
             ></div>
 
-            <p style={{margin: "24px 0"}}>{toBreakLine(content)}</p>
-
-            { shop['画像'] && <img src={shop['画像']} alt={shop['スポット名']} style={{width: "100%"}} />}
+            <p><a className="small" href={`http://maps.apple.com/?q=${shop['緯度']},${shop['経度']}`}>おすすめスポットまでの道順</a></p>
 
             <div className="meta">
 
-              <div className="rating">
-                <p>推しレベル</p>
-                <div
-                  onClick={clickHandler}
-                >
-                  <Link to={`/list?rate=${rate}`} className='rating-stars'>
-                    <ReactStars
-                      count={5}
-                      value={rate}
-                      edit={false}
-                      size={18}
-                    />
-                  </Link>
-                </div>
-              </div>
-
+              <h3>URL</h3>
               <a className="place-url" href={shop['URL']} target="_blank" rel="noopener noreferrer">{shop['URL']}</a>
-
-
-              <p className="author">作成者または紹介者: <span onClick={clickHandler}><Link to={`/list?author=${shop['学籍番号']}`}>{shop['作成者または紹介者']}</Link></span></p>
-
-              <p className="student-id">{`学籍番号: ${shop['学籍番号']}`}</p>
 
             </div>
 
-            <p><a className="small" href={`http://maps.apple.com/?q=${shop['緯度']},${shop['経度']}`}>おすすめスポットまでの道順</a></p>
           </>
           :
           <></>

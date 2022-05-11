@@ -1,4 +1,3 @@
-import React from "react";
 import './AboutUs.scss'
 import config from '../config.json'
 import { FaPlus } from 'react-icons/fa';
@@ -14,8 +13,8 @@ const Content = () => {
     <div className="about-us">
       <div className="container">
         <div className="branding">
-          <div className="image"><img src={`${process.env.PUBLIC_URL}/logo.svg`} alt=""/></div>
-          <div className="logo">{config.title}</div>
+          <div className="image"><img src={`${process.env.PUBLIC_URL}/geolonia_logo.svg`} alt=""/></div>
+          <div className="logo">Geolonia PWA</div>
         </div>
 
         <p>イエメシはテイクアウトに対応しているお店を紹介するためのアプリで、<a href="https://github.com/iemeshi/app">オープンソース</a>で開発されています。</p>
