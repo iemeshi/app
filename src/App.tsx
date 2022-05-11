@@ -52,7 +52,7 @@ const App = () => {
         let features = records.map((record: string) => {
           const properties = header.reduce((prev: any, column: any) => {
             const value = record[header.indexOf(column)];
-            prev[column] = zen2han(value);
+            prev[column] = zen2han(value || '');
             return prev;
           }, {});
           return properties;
