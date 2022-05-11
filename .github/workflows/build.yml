@@ -23,18 +23,20 @@ jobs:
     - uses: actions/checkout@v2
     - uses: actions/setup-node@v1
       with:
-        node-version: 12.x
+        node-version: 16.x
 
-    # - name: Download data
-    #   run: |
-    #     curl "https://sheets.googleapis.com/v4/spreadsheets/1XDeE519Xrq6eDx8KEGtGGvzAJFXhSAM2IhrRUayAaS8/values/sheet1!A1:S15000?key=${GOOGLE_SHEET_API_KEY}" -o ./public/data.json
-    #     git config --global user.name "${GITHUB_ACTOR}"
-    #     git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
-    #     if (git diff --shortstat | grep '[0-9]'); then \
-    #       git add .; \
-    #       git commit -m "スプレッドシートのデータを更新"; \
-    #       git push -f origin master; \
-    #     fi
+    - name: Download data
+      run: node bin/download.js ${GOOGLE_SHEET_API_KEY}
+
+    - name: Push the data to Github
+      run: |
+        git config --global user.name "${GITHUB_ACTOR}"
+        git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+        if (git diff --shortstat | grep '[0-9]'); then \
+          git add .; \
+          git commit -m "スプレッドシートのデータを更新"; \
+          git push -f origin master; \
+        fi
 
     - run: npm install
     - run: npm run build

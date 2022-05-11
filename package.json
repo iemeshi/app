@@ -57,6 +57,7 @@
     "@types/react-router-dom": "^5.3.3",
     "@types/react-stars": "^2.2.1",
     "axios": "^0.26.1",
+    "node-fetch": "2",
     "sass": "^1.49.9",
     "yaml": "^1.10.2"
   }
