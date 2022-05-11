@@ -30,7 +30,7 @@ const Content = (props: Props) => {
     for (let i = 0; i < data.length; i++) {
       const item = data[i];
 
-      if (item['画像'] && item['画像'].match('raw=1') && item['画像'].match('dropbox')) {
+      if (item['画像']) {
 
         imageListItems.push(
           <ImageListItem
