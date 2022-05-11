@@ -58,15 +58,6 @@ const App = () => {
             continue
           }
 
-          for (const key in feature) {
-
-            if (key === '画像' && feature['画像'].match(/^https:\/\/www.dropbox.com\/s\//)) {
-
-              // Dropbox の共有 URL から　直 URL に変換
-              feature['画像'] = feature['画像'].replace(/dl=\d+$/, 'raw=1')
-            }
-          }
-
           const shop = {
             ...feature,
             index: i
