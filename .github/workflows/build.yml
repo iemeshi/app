@@ -19,6 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       GOOGLE_SHEET_API_KEY: ${{ secrets.GOOGLE_SHEET_API_KEY }}
+      GOOGLE_SHEET_URL: ${{ secrets.GOOGLE_SHEET_URL }}
     steps:
     - uses: actions/checkout@v2
     - uses: actions/setup-node@v1
@@ -27,8 +28,8 @@ jobs:
 
     - run: npm install
 
-    - name: Download data
-      run: node bin/download.js ${GOOGLE_SHEET_API_KEY}
+    - name: Download data and set up environment variables
+      run: node bin/config.js ${GOOGLE_SHEET_URL} ${GOOGLE_SHEET_API_KEY}
 
     - name: Push the data to Github
       run: |

@@ -1,5 +1,5 @@
 {
-  "range": "'フォームの回答 1'!A1:K83",
+  "range": "'スポットデータ'!A1:K83",
   "majorDimension": "ROWS",
   "values": [
     [
@@ -10,7 +10,6 @@
       "経度",
       "スポット名",
       "紹介文",
-      "URL",
       "Instagram",
       "Twitter",
       "公式サイト"
@@ -23,7 +22,6 @@
       "135.784154",
       "タイヨウのカフェ",
       "ケバブライス　トルコのピザ「ピデ」も人気です。　オードブルもご予約可能です。",
-      "http://kcrjp.com/taiyocafe/",
       "taiyocafe",
       "nazar_kcr",
       "http://kcrjp.com/taiyocafe/"

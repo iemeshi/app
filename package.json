@@ -30,8 +30,8 @@
     "typescript": "~4.6.2"
   },
   "scripts": {
-    "start": "node bin/config.js && react-scripts start",
-    "build": "node bin/config.js && react-scripts build",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
     "build:assets": "node bin/download_logo.js && pwa-asset-generator public/logo.svg ./public/ --index ./public/index.html --manifest ./public/manifest.json --favicon true",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

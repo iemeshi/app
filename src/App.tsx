@@ -9,15 +9,11 @@ import Category from './App/Category'
 import Images from './App/Images'
 
 import Tabbar from './App/Tabbar'
+import table2json from "./lib/table2json";
 
 // You can see config.json after running `npm start` or `npm run build`
 // import config from './config.json'
 
-const zen2han = (str: string) => {
-  return str.replace(/[！-～]/g, function (s: string) {
-    return String.fromCharCode(s.charCodeAt(0) - 0xFEE0);
-  }).replace(/　/g, ' ');
-}
 
 const sortShopList = async (shopList: Iemeshi.ShopData[]) => {
 
@@ -46,17 +42,7 @@ const App = () => {
           return
         }
 
-        const header = data.values[0]
-        const records = data.values.slice(1)
-
-        let features = records.map((record: string) => {
-          const properties = header.reduce((prev: any, column: any) => {
-            const value = record[header.indexOf(column)];
-            prev[column] = zen2han(value || '');
-            return prev;
-          }, {});
-          return properties;
-        });
+        let features = table2json(data.values);
 
         const nextShopList: Iemeshi.ShopData[] = []
         for (let i = 0; i < features.length; i++) {
