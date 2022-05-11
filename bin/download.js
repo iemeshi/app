@@ -57,7 +57,7 @@ const GOOGLE_SHEET_API_KEY = process.argv[2] // 引数で指定した Google She
 const GOOGLE_SHEET_ID = config.data_url.replace('https://docs.google.com/spreadsheets/d/', '').replace('/edit?usp=sharing', '')
 
 // スプレッドシートのデータをダウンロードする
-fetch(`https://sheets.googleapis.com/v4/spreadsheets/${GOOGLE_SHEET_ID}/values/フォームの回答 1!A1:J?key=${GOOGLE_SHEET_API_KEY}`)
+fetch(`https://sheets.googleapis.com/v4/spreadsheets/${GOOGLE_SHEET_ID}/values/フォームの回答 1!A1:K?key=${GOOGLE_SHEET_API_KEY}`)
   .then(res => res.json())
   .then(json => {
 
