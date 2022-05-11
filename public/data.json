@@ -1,5 +1,5 @@
 {
-  "range": "'フォームの回答 1'!A1:J103",
+  "range": "'フォームの回答 1'!A1:K103",
   "majorDimension": "ROWS",
   "values": [
     [
@@ -12,7 +12,8 @@
       "紹介文",
       "URL",
       "Instagram",
-      "Twitter"
+      "Twitter",
+      "公式サイト"
     ],
     [
       "2022/05/11 11:34:10",
@@ -34,7 +35,8 @@
       "チキンカレーとお弁当販売しております。　お電話でご予約くださいませ。",
       "https://kankou-kushimoto.jp/spots/ms-cafe-dining",
       "https://www.instagram.com/ms.cafe_dining/?hl=ja",
-      "https://twitter.com/geoloniamap"
+      "https://twitter.com/geoloniamap",
+      "https://geolonia.com/"
     ]
   ]
 }
