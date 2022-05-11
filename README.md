@@ -2,7 +2,7 @@
 
 ## Geolonia PWA について
 
-Geolonia PWA は、GitHub と Google Sheets を使って、地図アプリを作れる PWA テンプレートです。
+Geolonia PWA は、GitHub と Google Sheets を使って、素早く PWA の地図アプリが作れるテンプレートです。
 
 ## 使い方
 
