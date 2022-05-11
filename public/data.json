@@ -1,5 +1,5 @@
 {
-  "range": "'フォームの回答 1'!A1:K103",
+  "range": "'フォームの回答 1'!A1:K102",
   "majorDimension": "ROWS",
   "values": [
     [
@@ -14,16 +14,6 @@
       "Instagram",
       "Twitter",
       "公式サイト"
-    ],
-    [
-      "2022/05/11 11:34:10",
-      "グルメ",
-      "https://www.dropbox.com/s/itxn033wfzrik27/sample.jpg?dl=0",
-      "33.51472",
-      "135.841932",
-      "ヴァレ・ノワール",
-      "ピラフ、カレー、スパゲティ等",
-      "https://www.facebook.com/vallee.noire"
     ],
     [
       "2022/05/11 14:15:05",
