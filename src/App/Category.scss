@@ -1,0 +1,47 @@
+.head {
+  padding: 0 16px;
+  background-color: #d2691e;
+  box-sizing: border-box;
+  height: 44px;
+  text-align: right;
+}
+
+.category
+{
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  overflow: scroll;
+  /* IE, Edge 対応 */
+  -ms-overflow-style: none;
+  /* Firefox 対応 */
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar
+  {
+    display: none;
+  }
+
+  .container
+  {
+    margin: 0;
+    padding: 24px;
+    padding-bottom: 50px;
+  }
+
+  p
+  {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .category-item {
+    display: flex;
+    flex-direction: column;
+    margin: 15px 10px;
+    & > label
+    {
+      margin-bottom: 5px;
+    }
+  }
+}

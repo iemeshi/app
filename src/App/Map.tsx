@@ -15,131 +15,165 @@ const CSS: React.CSSProperties = {
   position: 'relative',
 }
 
+const hidePoiLayers = (map: any) => {
+
+  const hideLayers = [
+    'poi',
+    'poi-primary',
+    'poi-r0-r9',
+    'poi-r10-r24',
+    'poi-r25',
+    'poi-bus',
+    'poi-entrance',
+  ]
+
+  for (let i = 0; i < hideLayers.length; i++) {
+    const layerId = hideLayers[i];
+    map.setLayoutProperty(layerId, 'visibility', 'none')
+  }
+}
+
 const Content = (props: Props) => {
   const mapNode = React.useRef<HTMLDivElement>(null);
-  const [ mapObject, setMapObject ] = React.useState<any>()
-  const [ shop, setShop ] = React.useState<Iemeshi.ShopData | undefined>(undefined)
+  const [mapObject, setMapObject] = React.useState<any>()
+  const [shop, setShop] = React.useState<Iemeshi.ShopData | undefined>(undefined)
+
+  const addMarkers = (mapObject: any, data: any) => {
+
+    if (!mapObject || !data) {
+      return
+    }
+
+    mapObject.on('render', () => {
+
+      // nothing to do if shops exists.
+      if (mapObject.getSource('shops')) {
+        return
+      }
+
+      hidePoiLayers(mapObject)
+
+      const textColor = '#000000'
+      const textHaloColor = '#FFFFFF'
+
+      const geojson = toGeoJson(data)
+
+      mapObject.addSource('shops', {
+        type: 'geojson',
+        data: geojson,
+        cluster: true,
+        clusterMaxZoom: 14,
+        clusterRadius: 25,
+      })
+
+      mapObject.addLayer({
+        id: 'shop-points',
+        type: 'circle',
+        source: 'shops',
+        filter: ['all',
+          ['==', '$type', 'Point'],
+        ],
+        paint: {
+          'circle-radius': 13,
+          'circle-color': '#FF0000',
+          'circle-opacity': 0.4,
+          'circle-stroke-width': 2,
+          'circle-stroke-color': '#FFFFFF',
+          'circle-stroke-opacity': 1,
+        },
+      })
+
+      mapObject.addLayer({
+        id: 'shop-symbol',
+        type: 'symbol',
+        source: 'shops',
+        filter: ['all',
+          ['==', '$type', 'Point'],
+        ],
+        paint: {
+          'text-color': textColor,
+          'text-halo-color': textHaloColor,
+          'text-halo-width': 2,
+        },
+        layout: {
+          'text-field': "{スポット名}",
+          'text-font': ['Noto Sans Regular'],
+          'text-variable-anchor': ['top', 'bottom', 'left', 'right'],
+          'text-radial-offset': 0.5,
+          'text-justify': 'auto',
+          'text-size': 12,
+          'text-anchor': 'top',
+          'text-max-width': 12,
+          'text-allow-overlap': false,
+        },
+      })
+
+      mapObject.on('mouseenter', 'shop-points', () => {
+        mapObject.getCanvas().style.cursor = 'pointer'
+      })
+
+      mapObject.on('mouseleave', 'shop-points', () => {
+        mapObject.getCanvas().style.cursor = ''
+      })
+
+      mapObject.on('mouseenter', 'shop-symbol', () => {
+        mapObject.getCanvas().style.cursor = 'pointer'
+      })
+
+      mapObject.on('mouseleave', 'shop-symbol', () => {
+        mapObject.getCanvas().style.cursor = ''
+      })
+
+      mapObject.on('click', 'shop-points', (event: any) => {
+        if (!event.features[0].properties.cluster) {
+          setShop(event.features[0].properties)
+        }
+      })
+
+      mapObject.on('click', 'shop-symbol', (event: any) => {
+        if (!event.features[0].properties.cluster) {
+          setShop(event.features[0].properties)
+        }
+      })
+
+      setCluster(mapObject)
+
+
+    });
+
+  }
 
   React.useEffect(() => {
-    if (!mapObject || !props.data) {
-      return
-    }
 
-    // nothing to do if shops exists.
-    if (mapObject.getSource('shops')) {
-      return
-    }
+    addMarkers(mapObject, props.data)
 
-    const textColor = '#000000'
-    const textHaloColor = '#FFFFFF'
-
-    const geojson = toGeoJson(props.data)
-
-    mapObject.addSource('shops', {
-      type: 'geojson',
-      data: geojson,
-      cluster: true,
-      clusterMaxZoom: 14,
-      clusterRadius: 25,
-    })
-
-    mapObject.addLayer({
-      id: 'shop-points',
-      type: 'circle',
-      source: 'shops',
-      filter: ['all',
-        ['==', '$type', 'Point'],
-      ],
-      paint: {
-        'circle-radius': 13,
-        'circle-color': '#FF0000',
-        'circle-opacity': 0.4,
-        'circle-stroke-width': 2,
-        'circle-stroke-color': '#FFFFFF',
-        'circle-stroke-opacity': 1,
-      },
-    })
-
-    mapObject.addLayer({
-      id: 'shop-symbol',
-      type: 'symbol',
-      source: 'shops',
-      filter: ['all',
-        ['==', '$type', 'Point'],
-      ],
-      paint: {
-        'text-color': textColor,
-        'text-halo-color': textHaloColor,
-        'text-halo-width': 2,
-      },
-      layout: {
-        'text-field': "{店名}",
-        'text-font': ['Noto Sans Regular'],
-        'text-variable-anchor': ['top', 'bottom', 'left', 'right'],
-        'text-radial-offset': 0.5,
-        'text-justify': 'auto',
-        'text-size': 12,
-        'text-anchor': 'top',
-        'text-max-width': 12,
-        'text-allow-overlap': false,
-      },
-    })
-
-    mapObject.on('mouseenter', 'shop-points', () => {
-      mapObject.getCanvas().style.cursor = 'pointer'
-    })
-
-    mapObject.on('mouseleave', 'shop-points', () => {
-      mapObject.getCanvas().style.cursor = ''
-    })
-
-    mapObject.on('mouseenter', 'shop-symbol', () => {
-      mapObject.getCanvas().style.cursor = 'pointer'
-    })
-
-    mapObject.on('mouseleave', 'shop-symbol', () => {
-      mapObject.getCanvas().style.cursor = ''
-    })
-
-    mapObject.on('click', 'shop-points', (event: any) => {
-      if (!event.features[0].properties.cluster) {
-        setShop(event.features[0].properties)
-      }
-    })
-
-    mapObject.on('click', 'shop-symbol', (event: any) => {
-      if (!event.features[0].properties.cluster) {
-        setShop(event.features[0].properties)
-      }
-    })
-
-    setCluster(mapObject)
   }, [mapObject, props.data])
 
   React.useEffect(() => {
     // Only once reder the map.
-    if (!mapNode.current || mapObject || props.data.length === 0) {
+    if (!mapNode.current || mapObject) {
       return
     }
 
     // @ts-ignore
     const { geolonia } = window;
 
-    const style = 'geolonia/gsi'
-
     const geojson = toGeoJson(props.data)
     const bounds = geojsonExtent(geojson)
 
     const map = new geolonia.Map({
       container: mapNode.current,
-      style: style,
+      style: 'geolonia/gsi',
       bounds: bounds,
-      fitBoundsOptions: {padding: 50}
+      fitBoundsOptions: { padding: 50 }
     });
 
+    if (bounds) {
+      map.fitBounds(bounds, { padding: 50 })
+    }
+
     const onMapLoad = () => {
-      map.setLayoutProperty('poi', 'visibility', 'none')
-      map.setLayoutProperty('poi-primary', 'visibility', 'none')
+      hidePoiLayers(map)
       setMapObject(map)
     }
 
@@ -164,20 +198,55 @@ const Content = (props: Props) => {
   }
 
   return (
-    <div style={CSS}>
-      <div
-        ref={mapNode}
-        style={CSS}
-        data-geolocate-control="on"
-        data-marker="off"
-        data-gesture-handling="off"
-      ></div>
-      {shop?
-        <Shop shop={shop} close={closeHandler} />
-        :
-        <></>
-      }
-    </div>
+    <>
+      <select
+        name="styles"
+        id="style-select"
+        style={{
+          position: "absolute",
+          zIndex: 2,
+          margin: "10px"
+        }}
+        onChange={(e) => {
+
+          const selectStyle = e.target.value
+
+          if (!mapObject) {
+            return
+          }
+
+          if (selectStyle === 'gsi') {
+            mapObject.setStyle('https://cdn.geolonia.com/style/geolonia/gsi/ja.json')
+          } else if (selectStyle === 'basic') {
+            mapObject.setStyle('https://geoloniamaps.github.io/basic/style.json')
+          } else if (selectStyle === 'midnight') {
+            mapObject.setStyle('https://cdn.geolonia.com/style/geolonia/midnight/ja.json')
+          }
+
+          addMarkers(mapObject, props.data)
+
+        }}
+      >
+        <option value="gsi">GSI</option>
+        <option value="basic">Basic</option>
+        <option value="midnight">Midnight</option>
+      </select>
+      <div style={CSS}>
+        <div
+          ref={mapNode}
+          style={CSS}
+          data-geolocate-control="on"
+          data-marker="off"
+          data-gesture-handling="off"
+        ></div>
+        {shop ?
+          <Shop shop={shop} close={closeHandler} />
+          :
+          <></>
+        }
+      </div>
+    </>
+
   );
 };
 

@@ -1,5 +1,5 @@
-title: 和歌山県串本町
-description: 和歌山県串本町内でテイクアウトできるお店
-data_url: https://docs.google.com/spreadsheets/d/1zyZQcaK3sREB59gv34aPAvk6NOktLe4P5gM42XmKmAc/export?format=csv&gid=0
-repository: https://github.com/iemeshi/app/
-form_url: https://docs.google.com/forms/d/e/1FAIpQLSdjDvfWD5pIuxYiIgVBBwmsfd8-6sgActbeMOm2450dRfZroQ/viewform
+title: Geolonia PWA
+description: Geolonia PWA は、GitHub と Google Sheets を使って、地図アプリを作れる PWA テンプレートです。
+data_url: https://docs.google.com/spreadsheets/d/1_m8s4P5tdSeam3nzC5ruSfuvtSejQKEX1FiBeOWJN3E/edit?usp=sharing
+repository: https://github.com/geoloniamaps/pwa/
+form_url: https://docs.google.com/forms/d/e/1FAIpQLSeAOimw1o4r85sQ0DzU4ohYjhRkAsG8P13GMWObLjLLkGRhtw/viewform

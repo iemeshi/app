@@ -15,6 +15,7 @@
 {
   white-space: nowrap;
   margin-right: 8px;
+  margin-bottom: 5px;
 }
 
 img
@@ -43,12 +44,15 @@ body
 
 .branding
 {
-  margin-bottom: 40px;
   text-align: center;
   .logo
   {
-    font-family: "Nico Moji";
+    font-family: 'Noto Sans JP', sans-serif;
     font-size: 72px;
+    max-width: 280px;
+    line-height: 0.9;
+    text-shadow: 1px 2px 3px #808080;
+    margin: auto;
   }
   .link
   {
@@ -56,9 +60,10 @@ body
   }
   .image
   {
-    width: 96px;
-    height: 96px;
+    max-width: 50%;
+    height: auto;
     display: block;
     margin: auto;
+    margin-bottom: 20px;
   }
 }

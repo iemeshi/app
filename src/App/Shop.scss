@@ -15,8 +15,17 @@
   {
     height: 100%;
     box-sizing: border-box;
-    padding: 16px 16px 64px;
+    padding: 16px 16px 120px;
     overflow: scroll;
+    /* IE, Edge 対応 */
+    -ms-overflow-style: none;
+    /* Firefox 対応 */
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar
+    {
+      display: none;
+    }
   }
 
   h2
@@ -79,6 +88,7 @@
   }
 
   .category,
+  .category-sub,
   .distance
   {
     border-radius: 4px;
@@ -91,5 +101,60 @@
   .category
   {
     background-color: #f5b041;
+    &:hover
+    {
+      opacity: 0.8;
+    }
   }
+
+  .category-sub
+  {
+    background-color: #A0CD63;
+    margin-left: 10px;
+    &:hover
+    {
+      opacity: 0.8;
+    }
+  }
+
+  .distance
+  {
+    margin-left: 10px;
+  }
+
+  .meta
+  {
+    margin: 15px 0;
+    & > *
+    {
+      margin: 10px 0;
+    }
+    .rating
+    {
+      display: flex;
+      align-items: center;
+      & > p
+      {
+        margin-right: 20px;
+      }
+    }
+    .place-url
+    {
+      overflow-wrap: break-word;
+    }
+  }
+
+  .rating-stars
+  {
+    cursor: pointer;
+    & > div > span
+    {
+      cursor: pointer!important;
+    }
+    &:hover
+    {
+      opacity: 0.8;
+    }
+  }
+
 }

@@ -6,30 +6,42 @@ name: build
 on:
   push:
     branches:
-      - '*'
-  pull_request:
-    branches: [ master ]
+      - 'master'
+
+  workflow_dispatch:
+
+  schedule:
+    - cron:  '0 3 * * 0,1,2,3,4,5,6'
+    # 日本時間の 8時~20時で、毎時25分と55分に実行
 
 jobs:
   ubuntu:
     runs-on: ubuntu-latest
+    env:
+      GOOGLE_SHEET_API_KEY: ${{ secrets.GOOGLE_SHEET_API_KEY }}
     steps:
     - uses: actions/checkout@v2
     - uses: actions/setup-node@v1
       with:
         node-version: 12.x
-    - run: npm install
-    - run: npm run build
 
-  windows:
-    runs-on: windows-latest
-    strategy:
-      matrix:
-        node-version: [12.x]
-    steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-node@v1
+    # - name: Download data
+    #   run: |
+    #     curl "https://sheets.googleapis.com/v4/spreadsheets/1XDeE519Xrq6eDx8KEGtGGvzAJFXhSAM2IhrRUayAaS8/values/sheet1!A1:S15000?key=${GOOGLE_SHEET_API_KEY}" -o ./public/data.json
+    #     git config --global user.name "${GITHUB_ACTOR}"
+    #     git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+    #     if (git diff --shortstat | grep '[0-9]'); then \
+    #       git add .; \
+    #       git commit -m "スプレッドシートのデータを更新"; \
+    #       git push -f origin master; \
+    #     fi
+
+    # - run: npm install
+    # - run: npm run build
+
+    - name: Deploy
+      uses: JamesIves/github-pages-deploy-action@4.1.1
       with:
-        node-version: 12.x
-    - run: npm install
-    - run: npm run build
+        branch: 'gh-pages'
+        folder: './build/'
+        target-folder: './'

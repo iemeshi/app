@@ -31,7 +31,7 @@ const toGeoJson = (data: any) => {
   for (const id in data) {
     const item = data[id] as itemObject
 
-    if (!item['経度'] || !item['緯度'] || !item['店名']) {
+    if (!item['経度'] || !item['緯度'] || !item['スポット名']) {
       return;
     }
 

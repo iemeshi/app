@@ -1,0 +1,64 @@
+.head {
+  padding: 0 16px;
+  background-color: #d2691e;
+  box-sizing: border-box;
+  height: 44px;
+  text-align: right;
+}
+
+.images
+{
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  overflow: scroll;
+  /* IE, Edge 対応 */
+  -ms-overflow-style: none;
+  /* Firefox 対応 */
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar
+  {
+    display: none;
+  }
+
+  .container
+  {
+    margin: 0;
+    padding: 10px;
+    padding-bottom: 50px;
+    overflow: scroll;
+    /* IE, Edge 対応 */
+    -ms-overflow-style: none;
+    /* Firefox 対応 */
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar
+    {
+      display: none;
+    }
+
+    img {
+      background-color: #ffffff;
+    }
+
+    #mui-image-list
+    {
+      /* IE, Edge 対応 */
+      -ms-overflow-style: none;
+      /* Firefox 対応 */
+      scrollbar-width: none;
+
+      &::-webkit-scrollbar
+      {
+        display: none;
+      }
+
+      .mui-image-list-item
+      {
+        overflow: hidden;
+      }
+    }
+  }
+
+}

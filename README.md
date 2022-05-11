@@ -1,20 +1,16 @@
-# iemeshi (イエメシ)
+# Geolonia PWA
 
-## iemeshi について
+## Geolonia PWA について
 
-iemeshi はテイクアウトメニューを提供するお店を探すアプリです。
+Geolonia PWA は、GitHub と Google Sheets を使って、地図アプリを作れる PWA テンプレートです。
+
+## 使い方
 
 ## 開発
 
 ```shell
-$ git clone git@github.com:iemeshi/app.git
-$ cd app
+$ git clone git@github.com:geoloniamaps/pwa.git
+$ cd pwa
 $ npm install
 $ npm start
 ```
-
-## 他の地域のイエメシの作り方
-
-以下のページを御覧ください。
-
-[地元のイエメシアプリをつくろう](https://iemeshi.jp/develop.html)
