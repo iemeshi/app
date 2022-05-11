@@ -67,7 +67,6 @@ const fetchDataSetEnv = async () => {
     try {
       // スプレッドシートのデータをダウンロードする
       const sheet_url = `https://sheets.googleapis.com/v4/spreadsheets/${GOOGLE_SHEET_ID}/values/${sheet.name}!A1:J?key=${GOOGLE_SHEET_API_KEY}`
-      console.log(sheet_url)
       const res = await fetch(sheet_url);
       config = await res.json();
 
