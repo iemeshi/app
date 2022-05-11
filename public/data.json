@@ -1,5 +1,5 @@
 {
-  "range": "'フォームの回答 1'!A1:J102",
+  "range": "'フォームの回答 1'!A1:J103",
   "majorDimension": "ROWS",
   "values": [
     [
@@ -11,7 +11,8 @@
       "スポット名",
       "紹介文",
       "URL",
-      "Instagram"
+      "Instagram",
+      "Twitter"
     ],
     [
       "2022/05/11 11:34:10",
@@ -22,6 +23,18 @@
       "ヴァレ・ノワール",
       "ピラフ、カレー、スパゲティ等",
       "https://www.facebook.com/vallee.noire"
+    ],
+    [
+      "2022/05/11 14:15:05",
+      "グルメ",
+      "",
+      "33.483795",
+      "135.783559",
+      "M's cafe & dining",
+      "チキンカレーとお弁当販売しております。　お電話でご予約くださいませ。",
+      "https://kankou-kushimoto.jp/spots/ms-cafe-dining",
+      "https://www.instagram.com/ms.cafe_dining/?hl=ja",
+      "https://twitter.com/geoloniamap"
     ]
   ]
 }
