@@ -1,5 +1,5 @@
 {
-  "range": "'フォームの回答 1'!A1:K102",
+  "range": "'フォームの回答 1'!A1:K82",
   "majorDimension": "ROWS",
   "values": [
     [
@@ -16,28 +16,17 @@
       "公式サイト"
     ],
     [
-      "2022/05/11 14:15:05",
+      "2022/05/11 14:46:34",
       "グルメ",
       "https://www.dropbox.com/s/itxn033wfzrik27/sample.jpg?dl=0",
-      "33.483795",
-      "135.783559",
-      "M's cafe & dining",
-      "チキンカレーとお弁当販売しております。　お電話でご予約くださいませ。",
-      "https://kankou-kushimoto.jp/spots/ms-cafe-dining",
-      "mscafeanddining",
-      "geoloniamap",
-      "https://geolonia.com/"
-    ],
-    [
-      "",
-      "グルメ",
-      "",
-      "33.484037",
-      "135.78934",
-      "Sea side bal Nansea's",
-      "当店人気のピザとパスタなどがテクアウト可能です。是非おこしくださいませ。　",
-      "",
-      "nanseas_kushimoto"
+      "33.475983",
+      "135.784154",
+      "タイヨウのカフェ",
+      "ケバブライス　トルコのピザ「ピデ」も人気です。　オードブルもご予約可能です。",
+      "http://kcrjp.com/taiyocafe/",
+      "taiyocafe",
+      "nazar_kcr",
+      "http://kcrjp.com/taiyocafe/"
     ]
   ]
 }
