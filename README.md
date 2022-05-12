@@ -12,7 +12,7 @@ Geolonia PWA は、GitHub と Google Sheets を使って、素早く PWA の地�
 
 ![スクリーンショット 2022-05-12 2 20 47](https://user-images.githubusercontent.com/8760841/167909365-eebb1d3e-ecad-4cb0-bd3b-ea67625a7b39.png)
 
-Google Sheets API を 'GOOGLE_SHEET_API_KEY'、スプレッドシートの共有設定を公開にした後、'GOOGLE_SHEET_URL'という値で、GitHub のシークレットに設定。 
+Settings > Secrets > Action > 「New repository secret」ボタンから、スプレッドシートのAPIキー を 'GOOGLE_SHEET_API_KEY'、スプレッドシートの共有URLを（共有設定を一般読み取りに設定）、'GOOGLE_SHEET_URL'という値で、GitHub のシークレットに設定。 
 
 　![スクリーンショット 2022-05-12 2 01 28](https://user-images.githubusercontent.com/8760841/167909825-43c819dd-12cf-447b-a5cf-7ed44ae43d59.png)
 
@@ -25,7 +25,7 @@ Settings > Action >General から Workflow permissions の権限を、「Read an
 
 下の形式のURLをクリックすると、地図アプリページに移動できる。
 
-https://あなたのユーザー名.github.io/アプリ名/,
+`https://あなたのユーザー名.github.io/アプリ名/`
 
 ## 開発
 
