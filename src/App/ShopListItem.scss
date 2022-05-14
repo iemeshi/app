@@ -38,7 +38,6 @@
   }
 
   .category,
-  .category-sub,
   .distance
   {
     border-radius: 4px;
@@ -58,40 +57,9 @@
     }
   }
 
-  .category-sub
-  {
-    background-color: #A0CD63;
-    &:hover
-    {
-      opacity: 0.8;
-    }
-  }
-
-  .rating
-  {
-    display: flex;
-    align-items: center;
-    & > p
-    {
-      margin-right: 20px;
-    }
-  }
-
-  .rating-stars
-  {
-    cursor: pointer;
-    & > div > span
-    {
-      cursor: pointer!important;
-    }
-    &:hover
-    {
-      opacity: 0.8;
-    }
-  }
-
   img
   {
+    cursor: pointer;
     object-fit: cover;
     width: 100%;
     height: 150px;
