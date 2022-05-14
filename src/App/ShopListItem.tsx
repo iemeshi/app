@@ -38,13 +38,9 @@ const Content = (props: Props) => {
           <span className="nowrap">{distanceTipText && <span className="distance">現在位置から {distanceTipText}</span>}</span>
         </div>
 
-        <Links data={props.data} />
-
         <div style={{ margin: "10px 10px 10px 0" }}>
 
-          { image && <img src={image} alt={props.data['スポット名']} />}
-
-          <p className="excerpt">{`${props.data['紹介文'].substring( 0, 100 )} ...`}</p>
+          { image && <img src={image} alt={props.data['スポット名']} onClick={clickHandler}/>}
 
         </div>
 
