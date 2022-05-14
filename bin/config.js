@@ -23,6 +23,12 @@ const table2json = (table) => {
   const features = records.map((record) => {
 
     const properties = header.reduce((prev, column) => {
+
+      console.log(column)
+      console.log(header.indexOf(column))
+      console.log(record)
+
+
       const value = record[header.indexOf(column)] || '';
       prev[column] = zen2han(value || '');
       return prev;
@@ -73,8 +79,6 @@ const fetchDataSetEnv = async () => {
         // ヘッダーをキーとしたJSONに変換する
         config = table2json(config);
       }
-
-      console.log(config)
 
     } catch (error) {
 
