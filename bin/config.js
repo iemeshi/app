@@ -76,8 +76,6 @@ const fetchDataSetEnv = async () => {
 
       console.log(config)
 
-      fs.writeFileSync(path.join(process.cwd(), sheet.exportFilePath), JSON.stringify(config, null, 2));
-
     } catch (error) {
 
       console.log(error)
@@ -86,6 +84,9 @@ const fetchDataSetEnv = async () => {
       );
       process.exit(2);
     }
+
+    fs.writeFileSync(path.join(process.cwd(), sheet.exportFilePath), JSON.stringify(config, null, 2));
+
   }
 
   const envText =
