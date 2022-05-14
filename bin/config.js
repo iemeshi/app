@@ -23,7 +23,7 @@ const table2json = (table) => {
   const features = records.map((record) => {
 
     const properties = header.reduce((prev, column) => {
-      const value = record[header.indexOf(column)];
+      const value = record[header.indexOf(column)] || '';
       prev[column] = zen2han(value || '');
       return prev;
     }, {});

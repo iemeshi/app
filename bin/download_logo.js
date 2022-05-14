@@ -16,31 +16,27 @@ try {
   process.exit(1);
 }
 
-if (!config.logo_image_url) {
-  process.stderr.write(
-    `config.yml の logo_image_url を指定して下さい。\n`
-  );
-  process.exit(2);
+if (config.logo_image_url && config.logo_image_url.match(/\.svg|\.SVG/)) {
+
+  const distLogoFilePath = path.join(process.cwd(), "/public/logo.svg");
+
+  // スプレッドシートのデータをダウンロードする
+  fetch(config.logo_image_url)
+    .then(res => res.text())
+    .then(text => {
+
+      fs.writeFileSync(distLogoFilePath, text);
+      process.exit(0);
+
+    })
+    .catch(err => {
+
+      console.log(err)
+      process.stderr.write(
+        `ロゴ画像のダウンロードに失敗しました。正しいURLか確認して下さい。\n`
+      );
+      process.exit(3);
+
+    })
+
 }
-
-const distLogoFilePath = path.join(process.cwd(), "/public/logo.svg");
-
-// スプレッドシートのデータをダウンロードする
-fetch(config.logo_image_url)
-  .then(res => res.text())
-  .then(text => {
-
-    fs.writeFileSync(distLogoFilePath, text);
-    process.exit(0);
-
-  })
-  .catch(err => {
-
-    console.log(err)
-    process.stderr.write(
-      `ロゴ画像のダウンロードに失敗しました。正しいURLか確認して下さい。\n`
-    );
-    process.exit(3);
-
-  })
-
