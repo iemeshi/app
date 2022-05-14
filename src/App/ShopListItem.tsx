@@ -1,4 +1,3 @@
-import Links from './Links'
 import { BsChevronCompactRight } from 'react-icons/bs'
 import { makeDistanceLabelText } from './distance-label'
 import './ShopListItem.scss'
