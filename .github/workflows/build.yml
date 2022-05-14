@@ -11,8 +11,8 @@ on:
   workflow_dispatch:
 
   schedule:
-    - cron:  '0 3 * * 0,1,2,3,4,5,6'
-    # 日本時間の 8時~20時で、毎時25分と55分に実行
+    - cron:  '*/10 * * * *'
+    # 10分ごとに実行
 
 jobs:
   ubuntu:
