@@ -74,6 +74,8 @@ const fetchDataSetEnv = async () => {
         config = table2json(config);
       }
 
+      console.log(config)
+
       fs.writeFileSync(path.join(process.cwd(), sheet.exportFilePath), JSON.stringify(config, null, 2));
 
     } catch (error) {
