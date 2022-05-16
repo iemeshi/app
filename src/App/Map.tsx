@@ -198,55 +198,20 @@ const Content = (props: Props) => {
   }
 
   return (
-    <>
-      <select
-        name="styles"
-        id="style-select"
-        style={{
-          position: "absolute",
-          zIndex: 2,
-          margin: "10px"
-        }}
-        onChange={(e) => {
-
-          const selectStyle = e.target.value
-
-          if (!mapObject) {
-            return
-          }
-
-          if (selectStyle === 'gsi') {
-            mapObject.setStyle('https://cdn.geolonia.com/style/geolonia/gsi/ja.json')
-          } else if (selectStyle === 'basic') {
-            mapObject.setStyle('https://geoloniamaps.github.io/basic/style.json')
-          } else if (selectStyle === 'midnight') {
-            mapObject.setStyle('https://cdn.geolonia.com/style/geolonia/midnight/ja.json')
-          }
-
-          addMarkers(mapObject, props.data)
-
-        }}
-      >
-        <option value="gsi">GSI</option>
-        <option value="basic">Basic</option>
-        <option value="midnight">Midnight</option>
-      </select>
-      <div style={CSS}>
-        <div
-          ref={mapNode}
-          style={CSS}
-          data-geolocate-control="on"
-          data-marker="off"
-          data-gesture-handling="off"
-        ></div>
-        {shop ?
-          <Shop shop={shop} close={closeHandler} />
-          :
-          <></>
-        }
-      </div>
-    </>
-
+    <div style={CSS}>
+      <div
+        ref={mapNode}
+        style={CSS}
+        data-geolocate-control="on"
+        data-marker="off"
+        data-gesture-handling="off"
+      ></div>
+      {shop ?
+        <Shop shop={shop} close={closeHandler} />
+        :
+        <></>
+      }
+    </div>
   );
 };
 
