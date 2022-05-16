@@ -46,7 +46,7 @@ const downloadLogo = async (logo_image_url) => {
 
   try {
 
-    const res = fetch(logo_image_url);
+    const res = await fetch(logo_image_url);
     const svg = await res.text();
     fs.writeFileSync(distLogoFilePath, svg);
 
