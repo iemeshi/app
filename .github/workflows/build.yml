@@ -45,6 +45,7 @@ jobs:
         git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
         if (git diff --shortstat | grep '[0-9]'); then \
           git add .; \
+          git status .; \
           git commit -m "スプレッドシートのデータを更新"; \
           git push -f origin master; \
         fi
