@@ -17,7 +17,7 @@ html, body, #root
 #root > .loader
 {
   width: 192px;
-  font-size: 48px;
+  font-size: 32px;
   text-align: center;
 }
 

@@ -88,7 +88,7 @@ const Content = (props: Props) => {
               data-navigation-control="off"
             ></div>
 
-            <p><a className="small" href={`http://maps.apple.com/?q=${shop['緯度']},${shop['経度']}`}>おすすめスポットまでの道順</a></p>
+            <p><a className="small" href={`http://maps.apple.com/?q=${shop['緯度']},${shop['経度']}`}>スポットまでの道順</a></p>
 
           </>
           :

@@ -88,7 +88,7 @@ const Content = (props: Props) => {
       >
         {
           list.length === 0 ?
-            <div className="shop-list-not-found">お探しのおすすめの場所が見つかりませんでした</div>
+            <div className="shop-list-not-found">お探しの場所が見つかりませんでした</div>
             :
             list.map((item, index) => {
 
