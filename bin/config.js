@@ -20,8 +20,6 @@ const table2json = (table) => {
   const header = table.values[0]
   let records = table.values.slice(1)
 
-  console.log(records)
-
   // データが空の時に、空の配列を返す
   if (records.length === 0) {
     records = Array(header.length).fill('');
@@ -75,8 +73,6 @@ const fetchDataSetEnv = async () => {
       const sheet_url = `https://sheets.googleapis.com/v4/spreadsheets/${GOOGLE_SHEET_ID}/values/${sheet.name}!A1:J?key=${GOOGLE_SHEET_API_KEY}`
       const res = await fetch(sheet_url);
       config = await res.json();
-
-      console.log(config)
 
       if (sheet.name === "基本データ") {
         // ヘッダーをキーとしたJSONに変換する
