@@ -9,6 +9,7 @@ const Content = () => {
     }
   }
 
+
   return (
     <div className="about-us">
       <div className="container">
@@ -17,11 +18,9 @@ const Content = () => {
           <div className="logo">Geolonia PWA</div>
         </div>
 
-        <p>イエメシはテイクアウトに対応しているお店を紹介するためのアプリで、<a href="https://github.com/iemeshi/app">オープンソース</a>で開発されています。</p>
-        <p>掲載されている店舗は、コミュニティのみなさんによってメンテナンスされています。</p>
-
-        <h2>{config.title}版について</h2>
-        <p>{config.title}版は以下のリポジトリで開発されています。</p>
+        <p>Geolonia PWAマップは、Google スプレッドシートを更新するだけでオリジナルの地図アプリを作成することができます。</p>
+        <p>プログラムはオープンソースで公開しているため、自由にカスタマイズしてご利用いただけます。</p>
+        <p>また、独自ドメインでの利用やデザインのカスタマイズや利用に必要な緯度・経度情報の提供も有償で別途承ります。ご希望の方は下記までお問い合わせください。</p>
 
         {config.form_url?
           <>
@@ -32,9 +31,9 @@ const Content = () => {
           <></>
         }
 
-        <h2>イエメシに関するお問い合わせ</h2>
-        <p><a href="https://geolonia.com/contact/">イエメシに関するお問い合わせはこちらからどうぞ。</a></p>
-        <p>掲載店舗に関するお問い合わせにつきましては、ご対応いたしかねますのであらかじめご了承ください。</p>
+        <h2>Geolonia お問い合わせフォーム</h2>
+        <p><a href="https://geolonia.com/contact/">https://geolonia.com/contact/</a></p>
+        <p>※カスタマイズおよびアプリの作成・利用についてはサポート対象外となります。あらかじめご了承ください。</p>
 
         {config.form_url?
           <>
