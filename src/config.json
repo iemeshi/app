@@ -1,6 +1,8 @@
 {
-  "logo_image_url": "",
-  "description": "",
-  "form_url": "",
-  "title": ""
+  "title": "Geolonia PWAマップ",
+  "description": "Google スプレッドシートを更新するだけでオリジナルの地図アプリを作成できる\n「Geolonia PWAマップ」",
+  "form_url": "https://docs.google.com/forms/d/e/1FAIpQLSeAOimw1o4r85sQ0DzU4ohYjhRkAsG8P13GMWObLjLLkGRhtw/viewform",
+  "logo_image_url": "https://raw.githubusercontent.com/geolonia/logo/master/svg/symbol.svg",
+  "background_image_url": "https://raw.githubusercontent.com/geoloniamaps/pwamap/master/public/geolonia_bgimage_1920_1080.png",
+  "primary_color": "#d2691e"
 }
