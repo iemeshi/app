@@ -32,11 +32,12 @@ jobs:
     - run: npm install
 
     - name: Download data and set up environment variables
-      run: node bin/config.js ${GOOGLE_SHEET_URL} ${GOOGLE_SHEET_API_KEY}
+      run: |
+        node bin/download.js ${GOOGLE_SHEET_URL} ${GOOGLE_SHEET_API_KEY}
+        node bin/config.js
 
     - name: Build PWA Assets
       run: |
-        node bin/download_logo.js
         npm run build:assets
 
     - name: Push the data to Github
