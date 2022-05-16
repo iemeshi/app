@@ -104,7 +104,7 @@ const fetchDataSetEnv = async () => {
       }
 
       // SVG 形式のロゴ画像が指定されていればダウンロードする
-      if (config.logo_image_url.match(/\.svg|\.SVG/)) {
+      if (config.logo_image_url && config.logo_image_url.match(/\.svg|\.SVG/)) {
 
         await downloadLogo(config.logo_image_url);
 
