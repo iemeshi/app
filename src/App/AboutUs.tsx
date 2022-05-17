@@ -28,6 +28,8 @@ const Content = () => {
 
         {config.form_url?
           <>
+            <h2>データの更新について</h2>
+            <p>このアプリのデータを更新するには下の「 + 」ボタンを押してフォームに必要な情報を入力してください。</p>
             <div className="goto-form"><button><FaPlus color="#FFFFFF" onClick={clickHandler} /></button></div>
           </>
           :
