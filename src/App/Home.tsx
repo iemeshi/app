@@ -2,7 +2,7 @@ import React from "react";
 import Map from "./Map"
 
 type Props = {
-  data: Iemeshi.ShopData[];
+  data: Pwamap.ShopData[];
 }
 
 const Content = (props: Props) => {

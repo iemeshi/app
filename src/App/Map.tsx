@@ -6,7 +6,7 @@ import setCluster from './setCluster'
 import Shop from './Shop'
 
 type Props = {
-  data: Iemeshi.ShopData[];
+  data: Pwamap.ShopData[];
 };
 
 const CSS: React.CSSProperties = {
@@ -36,7 +36,7 @@ const hidePoiLayers = (map: any) => {
 const Content = (props: Props) => {
   const mapNode = React.useRef<HTMLDivElement>(null);
   const [mapObject, setMapObject] = React.useState<any>()
-  const [shop, setShop] = React.useState<Iemeshi.ShopData | undefined>(undefined)
+  const [shop, setShop] = React.useState<Pwamap.ShopData | undefined>(undefined)
 
   const addMarkers = (mapObject: any, data: any) => {
 

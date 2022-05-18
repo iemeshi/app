@@ -4,7 +4,7 @@ import { FaTwitter, FaInstagram, FaHome } from 'react-icons/fa';
 import './Links.scss'
 
 type Props = {
-  data: Iemeshi.ShopData;
+  data: Pwamap.ShopData;
 };
 
 const noop = (e: React.MouseEvent) => {
