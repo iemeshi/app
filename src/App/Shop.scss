@@ -45,11 +45,6 @@
       background-color: #f5b041;
       color: #ffffff;
     }
-    &.distance
-    {
-      background-color: #41b0f5;
-      color: #ffffff;
-    }
     & + sup {
       margin-left: .5em;
     }
@@ -88,7 +83,6 @@
   }
 
   .category,
-  .distance
   {
     border-radius: 4px;
     background-color: #41b0f5;
@@ -104,11 +98,6 @@
     {
       opacity: 0.8;
     }
-  }
-
-  .distance
-  {
-    margin-left: 10px;
   }
 
 }

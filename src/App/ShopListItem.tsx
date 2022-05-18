@@ -1,10 +1,9 @@
 import { BsChevronCompactRight } from 'react-icons/bs'
-import { makeDistanceLabelText } from './distance-label'
 import './ShopListItem.scss'
 import { Link } from "react-router-dom";
 
 type Props = {
-  data: Iemeshi.ShopData;
+  data: Pwamap.ShopData;
   popupHandler: Function;
   queryCategory: string | null;
 };
@@ -14,7 +13,6 @@ const Content = (props: Props) => {
     props.popupHandler(props.data)
   }
 
-  const distanceTipText = makeDistanceLabelText(props.data.distance)
   const category = props.data['カテゴリ']
   const image = props.data['画像']
 
@@ -34,7 +32,6 @@ const Content = (props: Props) => {
               </Link>
             }
           </span>
-          <span className="nowrap">{distanceTipText && <span className="distance">現在位置から {distanceTipText}</span>}</span>
         </div>
 
         <div style={{ margin: "10px 10px 10px 0" }}>

@@ -6,13 +6,13 @@ import { useSearchParams } from "react-router-dom";
 import InfiniteScroll from 'react-infinite-scroll-component';
 
 type Props = {
-  data: Iemeshi.ShopData[];
+  data: Pwamap.ShopData[];
 }
 
 const Content = (props: Props) => {
 
-  const [shop, setShop] = React.useState<Iemeshi.ShopData | undefined>()
-  const [data, setData] = React.useState<Iemeshi.ShopData[]>(props.data)
+  const [shop, setShop] = React.useState<Pwamap.ShopData | undefined>()
+  const [data, setData] = React.useState<Pwamap.ShopData[]>(props.data)
   const [list, setList] = React.useState<any[]>([]);
   const [page, setPage] = React.useState(10);
   const [hasMore, setHasMore] = React.useState(true);
@@ -43,7 +43,7 @@ const Content = (props: Props) => {
   }, [props.data, queryCategory, page])
 
 
-  const popupHandler = (shop: Iemeshi.ShopData) => {
+  const popupHandler = (shop: Pwamap.ShopData) => {
     if (shop) {
       setShop(shop)
     }

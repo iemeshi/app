@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import './Category.scss'
 
 type Props = {
-  data: Iemeshi.ShopData[];
+  data: Pwamap.ShopData[];
 }
 
 const Content = (props: Props) => {

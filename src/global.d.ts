@@ -1,7 +1,6 @@
-declare namespace Iemeshi {
+declare namespace Pwamap {
   type ShopData = {
     index: number;
-    distance?: number;
     'タイムスタンプ': string;
     '緯度': string;
     '経度': string;
