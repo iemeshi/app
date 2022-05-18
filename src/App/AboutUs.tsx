@@ -14,8 +14,8 @@ const Content = () => {
     <div className="about-us">
       <div className="container">
         <div className="branding">
-          <div className="image"><img src={`${process.env.PUBLIC_URL}/geolonia_logo.svg`} alt=""/></div>
-          <div className="logo">Geolonia PWA</div>
+          <div className="image"><img src={`${process.env.PUBLIC_URL}/icon-pwamap.svg`} alt=""/></div>
+          <div className="logo">Geolonia PWAマップ</div>
         </div>
 
         <p>Geolonia PWAマップは、Google スプレッドシートを更新するだけでオリジナルの地図アプリを作成することができます。</p>
