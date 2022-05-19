@@ -20,6 +20,10 @@
     margin: 0;
     padding: 0;
     padding-bottom: 50px;
+    a
+    {
+      word-break: break-all;
+    }
   }
 
   .branding
