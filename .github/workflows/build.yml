@@ -26,9 +26,6 @@ jobs:
       with:
         node-version: 16.x
 
-    - name: Set base url at package.json
-      run: node bin/setup_base_url.js ${GITHUB_REPOSITORY}
-
     - run: npm install
 
     - name: Download data and set up environment variables
