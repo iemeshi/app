@@ -33,10 +33,25 @@ const hidePoiLayers = (map: any) => {
   }
 }
 
+const parseHash = (url?: Location | URL) => {
+  const qstr = (url || window.location).hash.substring(2);
+  const q = new URLSearchParams(qstr);
+  return q;
+};
+
+const updateHash = (q: URLSearchParams) => {
+
+  const hash = q.toString();
+  if (hash) {
+    window.location.hash = `#/?${q.toString().replace(/%2F/g, '/')}`;
+  }
+};
+
 const Content = (props: Props) => {
   const mapNode = React.useRef<HTMLDivElement>(null);
   const [mapObject, setMapObject] = React.useState<any>()
   const [shop, setShop] = React.useState<Pwamap.ShopData | undefined>(undefined)
+  const [ zLatLngString, setZLatLngString ] = React.useState<string>('');
 
   const addMarkers = (mapObject: any, data: any) => {
 
@@ -150,6 +165,15 @@ const Content = (props: Props) => {
   }, [mapObject, props.data])
 
   React.useEffect(() => {
+    const hash = parseHash();
+    if (zLatLngString) {
+      hash.set('map', zLatLngString);
+    }
+    updateHash(hash);
+
+  }, [ zLatLngString ]);
+
+  React.useEffect(() => {
     // Only once reder the map.
     if (!mapNode.current || mapObject) {
       return
@@ -165,16 +189,45 @@ const Content = (props: Props) => {
       container: mapNode.current,
       style: 'geolonia/gsi',
       bounds: bounds,
-      fitBoundsOptions: { padding: 50 }
+      fitBoundsOptions: { padding: 50 },
     });
 
-    if (bounds) {
+    const hash = parseHash();
+    if (hash && hash.get('map')) {
+
+      const latLngString = hash.get('map') || '';
+      const zlatlng = latLngString.split('/');
+
+      const zoom = zlatlng[0]
+      const lat = zlatlng[1]
+      const lng = zlatlng[2]
+
+      map.flyTo({center: [lng, lat], zoom});
+
+    } else if (bounds) {
+
       map.fitBounds(bounds, { padding: 50 })
+
     }
 
     const onMapLoad = () => {
       hidePoiLayers(map)
       setMapObject(map)
+
+      map.on('moveend', () => {
+        // see: https://github.com/maplibre/maplibre-gl-js/blob/ba7bfbc846910c5ae848aaeebe4bde6833fc9cdc/src/ui/hash.js#L59
+        const center = map.getCenter(),
+          rawZoom = map.getZoom(),
+          zoom = Math.round(rawZoom * 100) / 100,
+          // derived from equation: 512px * 2^z / 360 / 10^d < 0.5px
+          precision = Math.ceil((zoom * Math.LN2 + Math.log(512 / 360 / 0.5)) / Math.LN10),
+          m = Math.pow(10, precision),
+          lng = Math.round(center.lng * m) / m,
+          lat = Math.round(center.lat * m) / m,
+          zStr = Math.ceil(zoom);
+
+        setZLatLngString(`${zStr}/${lat}/${lng}`);
+      });
     }
 
     const orienteationchangeHandler = () => {
