@@ -3,6 +3,7 @@ import Links from './Links'
 import './Shop.scss'
 import { AiOutlineClose } from 'react-icons/ai'
 import { Link } from "react-router-dom";
+import { makeDistanceLabelText } from "./distance-label";
 
 type Props = {
   shop: Pwamap.ShopData;
@@ -37,6 +38,7 @@ const Content = (props: Props) => {
     setMap(nextMap)
   }, [shop, mapNode])
 
+  const distanceTipText = makeDistanceLabelText(shop.distance)
   const category = shop['カテゴリ']
   const content = shop['紹介文']
 
@@ -66,9 +68,12 @@ const Content = (props: Props) => {
           <>
             <h2>{shop['スポット名']}</h2>
             <div>
-              <Link to={`/list?category=${category}`}>
-                <span onClick={clickHandler} className="category">{category}</span>
-              </Link>
+              <span className="nowrap">
+                <Link to={`/list?category=${category}`}>
+                  <span onClick={clickHandler} className="category">{category}</span>
+                </Link>
+              </span>
+              <span className="nowrap">{distanceTipText && <span className="distance">現在位置から {distanceTipText}</span> }</span>
             </div>
 
             <div style={{margin: "24px 0"}}><Links data={shop} /></div>
