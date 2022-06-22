@@ -82,10 +82,9 @@
     }
   }
 
-  .category,
+  .category, .distance
   {
     border-radius: 4px;
-    background-color: #41b0f5;
     color: #ffffff;
     padding: 4px;
     font-size: 0.8rem;
@@ -94,6 +93,15 @@
   .category
   {
     background-color: #f5b041;
+    &:hover
+    {
+      opacity: 0.8;
+    }
+  }
+
+  .distance
+  {
+    background-color: #41b0f5;
     &:hover
     {
       opacity: 0.8;

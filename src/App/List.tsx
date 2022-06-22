@@ -4,9 +4,41 @@ import Shop from './Shop'
 import './List.scss'
 import { useSearchParams } from "react-router-dom";
 import InfiniteScroll from 'react-infinite-scroll-component';
+import { askGeolocationPermission } from '../geolocation'
+import * as turf from "@turf/turf"
 
 type Props = {
   data: Pwamap.ShopData[];
+}
+
+const sortShopList = async (shopList: Pwamap.ShopData[]) => {
+  const currentPosition = await askGeolocationPermission()
+  if(currentPosition) {
+    const from = turf.point(currentPosition);
+    const sortingShopList = shopList.map((shop) => {
+      const lng = parseFloat(shop['経度'])
+      const lat = parseFloat(shop['緯度'])
+      if(Number.isNaN(lng) || Number.isNaN(lat)) {
+        return shop
+      } else {
+        const to = turf.point([lng, lat])
+        const distance = turf.distance(from, to, {units: 'meters' as 'meters'});
+        return { ...shop, distance }
+      }
+    })
+    sortingShopList.sort((a,b) => {
+      if(typeof a.distance !== 'number' || Number.isNaN(a.distance)) {
+        return 1
+      } else if (typeof b.distance !== 'number' || Number.isNaN(b.distance)) {
+        return -1
+      } else {
+        return a.distance - b.distance
+      }
+    })
+    return sortingShopList
+  } else {
+    return shopList
+  }
 }
 
 const Content = (props: Props) => {
@@ -33,8 +65,24 @@ const Content = (props: Props) => {
     let isMounted = true
     // prevent memory leak
     if (isMounted) {
-      setList(data.slice(0, page))
-      setData(data)
+
+      const orderBy = process.env.REACT_ORDERBY
+
+      if (orderBy === 'distance') {
+
+        sortShopList(data)
+          .then(sortedData => {
+            // prevent memory leak
+            if (isMounted) {
+              setList(sortedData.slice(0, page))
+              setData(sortedData)
+            }
+          })
+
+      } else {
+        setList(data.slice(0, page))
+        setData(data)
+      }
     }
 
     return () => {
