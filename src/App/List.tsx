@@ -66,7 +66,7 @@ const Content = (props: Props) => {
     // prevent memory leak
     if (isMounted) {
 
-      const orderBy = process.env.REACT_ORDERBY
+      const orderBy = process.env.REACT_APP_ORDERBY
 
       if (orderBy === 'distance') {
 
