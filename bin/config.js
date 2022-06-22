@@ -11,7 +11,7 @@ try {
       // オブジェクト等は環境変数として出力しない
       .filter((key) => typeof config[key] === "string" || typeof config[key] === "number")
       .map((key) => `REACT_APP_${key.toUpperCase()}="${config[key]}"`)
-      .join("\n") + "\nSKIP_PREFLIGHT_CHECK=true\n";
+      .join("\n");
 
   fs.writeFileSync(path.join(process.cwd(), '.env'), envText)
 
