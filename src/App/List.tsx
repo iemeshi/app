@@ -119,9 +119,12 @@ const Content = (props: Props) => {
     key={0}
     style={{
       width: '100%',
+      height: '200px',
       textAlign: 'center',
+      position: 'relative',
+      top: '100px'
     }}
-  >Loading ...</div>;
+  >場所一覧を読み込み中です...</div>;
 
   return (
     <div id="shop-list" className="shop-list">
@@ -135,20 +138,17 @@ const Content = (props: Props) => {
         scrollableTarget="shop-list"
       >
         {
-          list.length === 0 ?
-            <div className="shop-list-not-found">お探しの場所が見つかりませんでした</div>
-            :
-            list.map((item, index) => {
+          list.map((item, index) => {
 
-              return (<div key={index} className="shop">
-                <ShopListItem
-                  data={item}
-                  popupHandler={popupHandler}
-                  queryCategory={queryCategory}
-                />
-              </div>)
+            return (<div key={index} className="shop">
+              <ShopListItem
+                data={item}
+                popupHandler={popupHandler}
+                queryCategory={queryCategory}
+              />
+            </div>)
 
-            })
+          })
         }
       </InfiniteScroll>
       {shop ?
