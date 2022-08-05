@@ -23,7 +23,7 @@ const Content = (props: Props) => {
   return (
     <>
       <div className="shop-link">
-        <h2 className="shop-title" onClick={clickHandler}>{props.data['スポット名']}</h2>
+        <h2 className="shop-title" style={{ wordBreak: "break-all" }} onClick={clickHandler}>{props.data['スポット名']}</h2>
         <div className='tag-box'>
           {
             !isCategoryPage &&

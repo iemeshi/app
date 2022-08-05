@@ -80,7 +80,7 @@ const Content = (props: Props) => {
 
             { shop['画像'] && <img src={shop['画像']} alt={shop['スポット名']} style={{width: "100%"}} />}
 
-            <p style={{margin: "24px 0"}}>{toBreakLine(content)}</p>
+            <p style={{margin: "24px 0", wordBreak: "break-all"}}>{toBreakLine(content)}</p>
 
             <div
               ref={mapNode}
