@@ -37,6 +37,9 @@ jobs:
       run: |
         npm run build:assets
 
+    - name: Set base url at package.json
+      run: node bin/setup_base_url.js ${GITHUB_REPOSITORY}
+
     - name: Push the data to Github
       run: |
         git config --global user.name "${GITHUB_ACTOR}"
