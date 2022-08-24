@@ -31,7 +31,6 @@ jobs:
     - name: Download data and set up environment variables
       run: |
         node bin/download.js ${GOOGLE_SHEET_URL} ${GOOGLE_SHEET_API_KEY}
-        node bin/config.js ${GITHUB_REPOSITORY}
 
     - name: Build PWA Assets
       run: |
@@ -48,7 +47,7 @@ jobs:
           git push -f origin master; \
         fi
 
-    - run: npm run build
+    - run: npm run build -repository=${GITHUB_REPOSITORY}
 
     - name: Deploy
       uses: JamesIves/github-pages-deploy-action@4.1.1
