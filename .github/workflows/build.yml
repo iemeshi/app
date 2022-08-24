@@ -31,14 +31,11 @@ jobs:
     - name: Download data and set up environment variables
       run: |
         node bin/download.js ${GOOGLE_SHEET_URL} ${GOOGLE_SHEET_API_KEY}
-        node bin/config.js
+        node bin/config.js  ${GITHUB_REPOSITORY}
 
     - name: Build PWA Assets
       run: |
         npm run build:assets
-
-    - name: Set base url at package.json
-      run: node bin/setup_base_url.js ${GITHUB_REPOSITORY}
 
     - name: Push the data to Github
       run: |

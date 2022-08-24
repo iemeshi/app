@@ -1,10 +1,14 @@
 const fs = require("fs");
 const path = require("path")
 const srcConfigFilePath = path.join(process.cwd(), "/src/config.json");
+const GITHUB = process.argv[2].split('/')
+const GITHUB_USERNAME = GITHUB[0]
+const GITHUB_REPOSITORY = GITHUB[1]
 
 let config;
 try {
   config = JSON.parse(fs.readFileSync(srcConfigFilePath));
+  config.homepage_url = `https://${GITHUB_USERNAME}.github.io/${GITHUB_REPOSITORY}/`
 
   const envText =
     Object.keys(config)
@@ -19,6 +23,3 @@ try {
   process.stderr.write(`${srcConfigFilePath} が存在しません。\n`);
   process.exit(1);
 }
-
-
-
