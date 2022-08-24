@@ -1,16 +1,20 @@
 const fs = require("fs");
 const path = require("path")
-
-const GITHUB = process.argv[2].split('/')
-const GITHUB_USERNAME = GITHUB[0]
-const GITHUB_REPOSITORY = GITHUB[1]
-
 const srcConfigFilePath = path.join(process.cwd(), "/src/config.json");
 
 let config;
+let isCI = process.argv.length === 3;
+console.log(isCI);
+
 try {
   config = JSON.parse(fs.readFileSync(srcConfigFilePath));
-  config.homepage_url = `https://${GITHUB_USERNAME}.github.io/${GITHUB_REPOSITORY}/`
+
+  if (isCI) {
+    const GITHUB = process.argv[2].split('/')
+    const GITHUB_USERNAME = GITHUB[0]
+    const GITHUB_REPOSITORY = GITHUB[1]
+    config.homepage_url = `https://${GITHUB_USERNAME}.github.io/${GITHUB_REPOSITORY}/`
+  }
 
   const envText =
     Object.keys(config)
