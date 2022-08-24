@@ -13,12 +13,7 @@ try {
     const GITHUB_USERNAME = GITHUB[0]
     const GITHUB_REPOSITORY = GITHUB[1]
     config.homepage_url = `https://${GITHUB_USERNAME}.github.io/${GITHUB_REPOSITORY}/`
-  } else {
-    // for local development
-    config.homepage_url = 'http://localhost:3000/'
   }
-
-  console.log(config)
 
   const envText =
     Object.keys(config)
