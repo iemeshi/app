@@ -1,12 +1,11 @@
 const fs = require("fs");
 const path = require("path")
-const srcConfigFilePath = path.join(process.cwd(), "/src/config.json");
-
-console.log(process.argv[2])
 
 const GITHUB = process.argv[2].split('/')
 const GITHUB_USERNAME = GITHUB[0]
 const GITHUB_REPOSITORY = GITHUB[1]
+
+const srcConfigFilePath = path.join(process.cwd(), "/src/config.json");
 
 let config;
 try {
