@@ -32,3 +32,4 @@ Geolonia PWA では、GitHub Actions を利用して、定期的に Google Sheet
 ローカル環境で開発時にデータの更新をする際は、`git pull origin master` を実行して最新のデータをダウンロードして下さい。
 
 - GitHub Actions は10分毎のスケジュールですが、GitHub の仕様により大幅に遅れる可能性があります。
+- リポジトリが60日間使用されないと、GitHub Actions は自動的に無効になります。ご注意ください。
