@@ -38,30 +38,6 @@ const table2json = (table) => {
   return features[0]
 }
 
-const downloadLogo = async (logo_image_url) => {
-
-  const distLogoFilePath = path.join(process.cwd(), "/public/logo.svg");
-
-  // スプレッドシートのデータをダウンロードする
-
-  try {
-
-    const res = await fetch(logo_image_url);
-    const svg = await res.text();
-    fs.writeFileSync(distLogoFilePath, svg);
-
-  } catch (error) {
-
-    console.log(error)
-    process.stderr.write(
-      `ロゴ画像のダウンロードに失敗しました。正しいURLか確認して下さい。\n`
-    );
-    process.exit(1);
-
-  }
-
-}
-
 const fetchDataSetEnv = async () => {
 
   // 引数に Google Sheet API key が指定されてなければ終了。
@@ -101,13 +77,6 @@ const fetchDataSetEnv = async () => {
       if (sheet.name === "基本データ") {
         // ヘッダーをキーとしたJSONに変換する
         config = table2json(config);
-      }
-
-      // SVG 形式のロゴ画像が指定されていればダウンロードする
-      if (config.logo_image_url && config.logo_image_url.match(/\.svg|\.SVG/)) {
-
-        await downloadLogo(config.logo_image_url);
-
       }
 
     } catch (error) {
